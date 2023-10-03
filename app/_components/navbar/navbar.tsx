@@ -80,18 +80,18 @@ export const Navbar = () => {
 				className="hidden sm:flex basis-1/5 sm:basis-full"
 				justify="end"
 			>
-				<NavbarItem className="hidden sm:flex gap-2">
+				<NavbarItem className="hidden lg:flex gap-2">
 					<ThemeSwitch />
 				</NavbarItem>
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-				<NavbarItem className="hidden md:flex">
+				<NavbarItem className="hidden lg:flex">
 					<UserDropdown />
 				</NavbarItem>
 			</NavbarContent>
 
-			<NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+			<NavbarContent className="lg:hidden basis-1 pl-4" justify="end">
 				<ThemeSwitch />
-				<NavbarMenuToggle />
+				<NavbarMenuToggle className="" />
 			</NavbarContent>
 
 			<NavbarMenu>
