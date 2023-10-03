@@ -15,7 +15,7 @@ import Lyrics3 from '@/app/_content/lyrics3.mdx'
 import Lyrics4 from '@/app/_content/lyrics4.mdx'
 import Lyrics5 from '@/app/_content/lyrics5.mdx'
 
-const CourseLayout = ({ params, children }: { params: { slug: string }, children: React.ReactNode }) => {
+const CoursePage = ({ params }: { params: { slug: string }, children: React.ReactNode }) => {
 
   const courseData = siteContent.courses.find((course => course.slug.includes(params.slug)))
 
@@ -86,7 +86,7 @@ const CourseLayout = ({ params, children }: { params: { slug: string }, children
 	);
 }
 
-export default CourseLayout
+export default CoursePage
 
 {/* <Tabs
               fullWidth
