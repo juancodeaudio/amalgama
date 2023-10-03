@@ -1,16 +1,25 @@
 import NextLink from "next/link";
 import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
 import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import { siteConfig } from "@/app/_config/site";
+import { title, subtitle } from "@/app/_components/primitives";
+import clsx from "clsx";
+import Shapes from "./_components/home/shapes";
 
 export default function Home() {
 	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
+		<main className="flex flex-col items-center justify-center mx-auto w-screen px-10">
+      <section className="flex w-full h-screen justify-center">
+        <div className="flex flex-col w-1/2 h-full justify-center items-center">
+          <div className="h-[70vh] w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/50 to-transparent to-70%">
+            <Shapes />
+          </div>
+        </div>
+        <div className="flex flex-col w-1/2 h-full text-center justify-center">
+				  <h1 className={title({ size: "xl", color: "blue"})}>AMALGAMA</h1>
+        </div>
+			</section>
+			{/* <section className="inline-block max-w-lg text-center justify-center">
 				<h1 className={title()}>Make&nbsp;</h1>
 				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
 				<br />
@@ -20,9 +29,8 @@ export default function Home() {
 				<h2 className={subtitle({ class: "mt-4" })}>
 					Beautiful, fast and modern React UI library.
 				</h2>
-			</div>
-
-			<div className="flex gap-3">
+			</section> */}
+			{/* <section className="flex gap-3">
 				<Link
 					isExternal
 					as={NextLink}
@@ -37,18 +45,9 @@ export default function Home() {
 					className={buttonStyles({ variant: "bordered", radius: "full" })}
 					href={siteConfig.links.github}
 				>
-					<GithubIcon size={20} />
 					GitHub
 				</Link>
-			</div>
-
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
-		</section>
+			</section> */}
+		</main>
 	);
 }
