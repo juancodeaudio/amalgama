@@ -1,39 +1,58 @@
 'use client'
 
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { useSearchParams } from 'next/navigation'
 import { Card, CardHeader, CardBody } from "@nextui-org/card"
 import { title } from "@/app/_components/primitives";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { Button } from "@nextui-org/button";
 import clsx from "clsx";
 import { siteContent } from "@/app/_config/content";
+import { motion as m } from "framer-motion";
 import Lyrics1 from '@/app/_content/lyrics1.mdx'
 import Lyrics2 from '@/app/_content/lyrics2.mdx'
 import Lyrics3 from '@/app/_content/lyrics3.mdx'
 import Lyrics4 from '@/app/_content/lyrics4.mdx'
 import Lyrics5 from '@/app/_content/lyrics5.mdx'
+import { HiOutlineChevronDoubleLeft, HiXMark } from "react-icons/hi2";
 
 const CoursePage = ({ params }: { params: { slug: string }}) => {
 
   const courseData = siteContent.courses.find((course => course.slug.includes(params.slug)))
 
   const [currentClass, setCurrentClass] = useState(0)
-  const searchParams = useSearchParams()
-
-  if(!!courseData) {
-    const queryClass = searchParams.get('c')
-    // queryClass
-    // ? setCurrentClass(courseData.classes.find((clase => clase.id.toString().includes(queryClass))))
-    // : setCurrentClass(courseData.classes[0])
-    const section = searchParams.get('s')
-  
-  }
+  const [tableIsActive, setTableIsActive] = useState(false)
 
 	return (
-		<main className='flex px-10 gap-10'>
-      <aside className="w-1/4 h-[75vh] sticky top-[15%]">
+		<main className='flex relative px-10 gap-10'>
+      <m.aside className={`w-2/3 z-[900] h-screen top-0 ${tableIsActive? 'fixed lg:hidden': 'hidden'}`}>
+        <Card className="relative w-full h-full py-6">
+          {
+            !!courseData &&
+            <>
+            <CardHeader>
+              <Button onPress={() => setTableIsActive(false)} variant="flat" isIconOnly className="absolute top-4 right-4 z-[9999]"><HiXMark /></Button>
+              <h2 className={clsx(title({ size: 'sm' }), 'ml-2 text-primary')}>{courseData.title}</h2>
+            </CardHeader>
+            <CardBody className="pt-0">
+              <Accordion defaultExpandedKeys={[courseData.classes[currentClass].id.toString()]}>
+                {
+                  courseData.classes.map((courseClass) => (
+                    <AccordionItem key={courseClass.id} aria-label={courseClass.title} title={courseClass.title} subtitle={courseClass.description} className="mb-6">
+                      {
+                        courseClass.sections.map((section) => (
+                          <Button variant="flat" onPress={() => setCurrentClass(courseData.classes.indexOf(courseClass))} color={courseClass.id === courseData.classes[currentClass].id ? 'primary': 'default'} className="w-full justify-start" key={section.id}>{section.title}</Button>
+                        ))
+                      }
+                    </AccordionItem>
+                  ))
+                }
+              </Accordion>
+            </CardBody>
+            </>
+          }
+        </Card>
+      </m.aside>
+      <m.aside className="hidden lg:flex w-1/4 h-[75vh] sticky top-[15%]">
         <Card className="w-full h-full py-6">
           {
             !!courseData &&
@@ -59,10 +78,11 @@ const CoursePage = ({ params }: { params: { slug: string }}) => {
             </>
           }
         </Card>
-      </aside>
-      <section className="w-3/4 flex flex-col gap-10">
-        <Card className="w-full h-[90vh]">
+      </m.aside>
+      <section className="w-full lg:w-3/4 flex flex-col gap-10">
+        <Card className="relative w-full h-[90vh]">
           <CardHeader className="w-full flex justify-center pt-20">
+            <Button onPress={() => setTableIsActive(true)} variant="flat" isIconOnly className="absolute top-4 left-4"><HiOutlineChevronDoubleLeft /></Button>
             <h2 className={title({ size:'md'})}>{courseData?.classes[currentClass].title}</h2>
           </CardHeader>
           <CardBody className="w-full h-[80vh] flex flex-col items-center pt-10">
