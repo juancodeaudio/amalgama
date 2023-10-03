@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-em {
-  @apply text-center
+h1 {
+  @apply font-magilio
 }

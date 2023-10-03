@@ -39,7 +39,7 @@ const CoursePage = ({ params }: { params: { slug: string }}) => {
             !!courseData &&
             <>
             <CardHeader>
-              <h2 className={clsx(title({ size: 'sm' }), 'ml-2')}>{courseData.title}</h2>
+              <h2 className={clsx(title({ size: 'sm' }), 'ml-2 text-primary')}>{courseData.title}</h2>
             </CardHeader>
             <CardBody className="pt-0">
               <Accordion defaultExpandedKeys={[courseData.classes[currentClass].id.toString()]}>
@@ -62,7 +62,7 @@ const CoursePage = ({ params }: { params: { slug: string }}) => {
       </aside>
       <section className="w-3/4 flex flex-col gap-10">
         <Card className="w-full h-[90vh]">
-          <CardHeader className="w-full flex justify-center">
+          <CardHeader className="w-full flex justify-center pt-20">
             <h2 className={title({ size:'md'})}>{courseData?.classes[currentClass].title}</h2>
           </CardHeader>
           <CardBody className="w-full h-[80vh] flex flex-col items-center pt-10">

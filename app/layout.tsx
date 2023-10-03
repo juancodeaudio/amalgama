@@ -1,7 +1,7 @@
 import "./_styles/globals.css"
 import { Metadata } from "next";
 import { siteConfig } from "@/app/_config/site";
-import { fontSans } from "@/app/_config/fonts";
+import { fontSans, fontMagilio } from "@/app/_config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/app/_components/navbar/navbar";
 import { Link } from "@nextui-org/link";
@@ -37,7 +37,8 @@ export default function RootLayout({
 			<body
 				className={clsx(
 					"font-sans antialiased",
-					fontSans.variable
+					fontSans.variable,
+          fontMagilio.variable
 				)}
 			>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>

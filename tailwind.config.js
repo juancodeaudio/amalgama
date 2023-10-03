@@ -9,11 +9,30 @@ module.exports = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        magilio: ['var(--font-magilio)', 'sans-serif']
+      }
+    },
   },
   darkMode: "class",
   plugins: [
     require('@tailwindcss/typography'),
-    nextui({})
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            background: '#f5f5f5',
+            primary: '#ce36c2'
+          }
+        },
+        dark: {
+          colors: {
+            background: '#1b1b1b',
+            primary: '#ce36c2'
+          }
+        },
+      },
+    })
   ],
 }
