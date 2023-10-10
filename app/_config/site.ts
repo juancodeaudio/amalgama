@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-	name: "Music Web",
+	name: "Amalgama",
 	description: "Make beautiful websites regardless of your design experience.",
 	navItems: [
 		{

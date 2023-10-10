@@ -15,3 +15,8 @@ export const fontMagilio = localFont({
   src: '../_fonts/MagilioRegular.otf',
   variable: '--font-magilio'
 })
+
+export const fontMigha = localFont({
+  src: '../_fonts/Migha-BoldCondensedCNTR.otf',
+  variable: '--font-migha'
+})

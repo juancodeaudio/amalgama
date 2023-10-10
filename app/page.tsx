@@ -11,16 +11,18 @@ import Shapes from "./_components/home/shapes";
 
 export default function Home() {
 	return (
-		<main className="flex flex-col h-screen items-center justify-center mx-auto w-screen px-40">
+		<main className="flex flex-col h-screen items-center justify-center -mt-16 mx-auto w-screen px-40 bg-[rgb(186,189,244)]
+      bg-[linear-gradient(135deg,rgba(186,189,244,1)0%,rgba(178,158,228,1)25%,rgba(229,150,225,1)50%,rgba(172,130,200,1)75%,rgba(216,131,187,1)100%)]">
       <section className="flex w-full h-screen justify-center">
         <div className="flex flex-col w-1/2 h-full justify-center items-center">
-          <m.div initial={{opacity: 0, scale: 0.5}} animate={{opacity: 1, scale: 1}} className="h-[70vh] w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/50 to-transparent to-70%">
+          {/* <m.div initial={{opacity: 0, scale: 0.5}} animate={{opacity: 1, scale: 1}} className="h-[70vh] w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/50 to-transparent to-70%">
             <Shapes />
-          </m.div>
+          </m.div> */}
         </div>
-        <div className="flex flex-col w-1/2 h-full text-center justify-center gap-0">
-				  <m.h1 initial={{opacity: 0, y:20}} animate={{opacity: 1, y: 0}} className={clsx(title({ size: "xl"}), 'text-primary')}>AMAL</m.h1>
-				  <m.h1 initial={{opacity: 0, y:20}} animate={{opacity: 1, y: 0}} className={clsx(title({ size: "xl"}), 'text-primary')}>GAMA</m.h1>
+        <div className="flex flex-col w-1/2 h-full justify-center gap-6">
+				  <m.h1 initial={{opacity: 0, y:20}} animate={{opacity: 1, y: 0}} className={clsx(title({ size: "xl"}), 'text-foreground/60')}>AMALGAMA</m.h1>
+          <p>Algun super texto aquí para hablar de la plataforma</p>
+          <button className="bg-background w-48 h-12 rounded-full text-foreground mt-6">EMPIEZA AHORA</button>
         </div>
 			</section>
 			{/* <section className="inline-block max-w-lg text-center justify-center">

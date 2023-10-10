@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        magilio: ['var(--font-magilio)', 'sans-serif']
+        magilio: ['var(--font-magilio)', 'sans-serif'],
+        migha: ['var(--font-migha)', 'sans-serif'],
       }
     },
   },
@@ -23,13 +24,17 @@ module.exports = {
         light: {
           colors: {
             background: '#f5f5f5',
-            primary: '#ce36c2'
+            foreground: "#2B2B30",
+            primary: '#E395E0',
+            secondary: '#B9BCF3',
           }
         },
         dark: {
           colors: {
-            background: '#1b1b1b',
-            primary: '#ce36c2'
+            background: '#2B2B30',
+            foreground: '#f5f5f5',
+            primary: '#E395E0',
+            secondary: '#B9BCF3'
           }
         },
       },
