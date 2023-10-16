@@ -11,7 +11,13 @@ export default function Courses() {
         <div className="w-screen h-5/6 flex flex-col lg:flex-row gap-8 md:gap-10 xl:gap-20 py-5 px-10 xl:px-40 overflow-x-scroll">
           {
             siteContent.courses.map((course) => (
-              <CourseCard key={course.slug} courseTitle={course.title} description={course.description} href={`/courses/${course.slug}`} />
+              <CourseCard
+                key={course.slug}
+                courseTitle={course.title}
+                description={course.description}
+                courseImage={course.image}
+                href={`/courses/${course.slug}?class=${course.classes[0].slug}`}
+              />
             ))
           }
         </div>

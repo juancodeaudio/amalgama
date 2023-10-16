@@ -1,4 +1,5 @@
 export type SiteContent = typeof siteContent;
+export type CourseType = typeof siteContent['courses']
 
 export const siteContent = {
   courses: [
@@ -7,66 +8,47 @@ export const siteContent = {
       slug: 'lyrics',
       title: 'Letras con alma',
       description: 'Tu viaje creativo',
+      image: 'lyrics-bg.jpg',
       classes: [
         {
           id: 110,
           title: 'Introducción',
+          slug: 'introduccion',
           description: 'Comienza el camino',
-          sections: [
-            {
-              id: 111,
-              title: 'Intro',
-              content: ''
-            }
-          ]
+          content: 'lyrics1.mdx',
+          duration: 1
         },
         {
           id: 120,
           title: 'De la vida a la página',
+          slug: 'de-la-vida-a-la-pagina',
           description: 'Explorando la escritura musical',
-          sections: [
-            {
-              id: 121,
-              title: 'Sección 1',
-              content: ''
-            }
-          ]
+          content: 'lyrics2.mdx',
+          duration: 2
         },
         {
           id: 130,
           title: 'El ADN de la música',
+          slug: 'el-adn-de-la-musica',
           description: 'Investigando las partes de una canción',
-          sections: [
-            {
-              id: 131,
-              title: 'Sección 2',
-              content: ''
-            }
-          ]
+          content: 'lyrics3.mdx',
+          duration: 5
         },
         {
           id: 140,
           title: 'Palabras con poder',
+          slug: 'palabras-con-poder',
           description: 'Creando tus propias historias musicales',
-          sections: [
-            {
-              id: 141,
-              title: 'Sección 3',
-              content: ''
-            }
-          ]
+          content: 'lyrics4.mdx',
+          duration: 3
         },
         {
           id: 150,
           title: 'La métrica lírica',
-          description: 'Explorando la estructura y longitud de las letras',
-          sections: [
-            {
-              id: 151,
-              title: 'Sección 4',
-              content: ''
-            }
-          ]
+          slug: 'la-metrica-lirica',
+          description: 'Estructura y longitud de las letras',
+          content: 'lyrics5.mdx',
+          duration: 4
         }
       ]
     },
@@ -75,54 +57,39 @@ export const siteContent = {
       slug: 'music',
       title: 'Música',
       description: 'Super mega descripción',
+      image: 'music-bg.jpg',
       classes: [
         {
           id: 210,
           title: '',
+          slug: '',
           description: '',
-          sections: [
-            {
-              id: 211,
-              title: '',
-              content: ''
-            }
-          ]
+          content: '',
+          duration: 1
         },
         {
           id: 220,
           title: '',
+          slug: '',
           description: '',
-          sections: [
-            {
-              id: 221,
-              title: '',
-              content: ''
-            }
-          ]
+          content: '',
+          duration: 1
         },
         {
           id: 230,
           title: '',
+          slug: '',
           description: '',
-          sections: [
-            {
-              id: 231,
-              title: '',
-              content: ''
-            }
-          ]
+          content: '',
+          duration: 1
         },
         {
           id: 240,
           title: '',
+          slug: '',
           description: '',
-          sections: [
-            {
-              id: 241,
-              title: '',
-              content: ''
-            }
-          ]
+          content: '',
+          duration: 1
         }
       ]
     },
@@ -131,54 +98,39 @@ export const siteContent = {
       slug: 'experimentation',
       title: 'Experimentación',
       description: 'Super mega descripción',
+      image: 'exper-bg.jpg',
       classes: [
         {
           id: 310,
           title: '',
+          slug: '',
           description: '',
-          sections: [
-            {
-              id: 311,
-              title: '',
-              content: ''
-            }
-          ]
+          content: '',
+          duration: 1
         },
         {
           id: 320,
           title: '',
+          slug: '',
           description: '',
-          sections: [
-            {
-              id: 321,
-              title: '',
-              content: ''
-            }
-          ]
+          content: '',
+          duration: 1
         },
         {
           id: 330,
           title: '',
+          slug: '',
           description: '',
-          sections: [
-            {
-              id: 331,
-              title: '',
-              content: ''
-            }
-          ]
+          content: '',
+          duration: 1
         },
         {
           id: 340,
           title: '',
+          slug: '',
           description: '',
-          sections: [
-            {
-              id: 341,
-              title: '',
-              content: ''
-            }
-          ]
+          content: '',
+          duration: 1
         }
       ]
     },

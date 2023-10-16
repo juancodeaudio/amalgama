@@ -9,10 +9,11 @@ import { HiHeart, HiArrowRight } from "react-icons/hi2";
 type CourseCardProps = {
   courseTitle: string,
   description: string,
+  courseImage: string,
   href: string
 }
 
-const CourseCard = ({courseTitle, description, href}: CourseCardProps) => {
+const CourseCard = ({courseTitle, description, courseImage, href}: CourseCardProps) => {
   return (
     <Card 
       isBlurred
@@ -27,7 +28,7 @@ const CourseCard = ({courseTitle, description, href}: CourseCardProps) => {
               className="object-cover"
               height={200}
               shadow="md"
-              src="https://nextui-docs-v2.vercel.app/images/album-cover.png"
+              src={courseImage}
               width="100%"
             />
           </div>
