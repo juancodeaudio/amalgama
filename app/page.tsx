@@ -1,7 +1,7 @@
 'use client'
 
-import NextLink from "next/link";
-import { Link } from "@nextui-org/link";
+import Link from "next/link";
+import { Button } from "@nextui-org/button";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/app/_config/site";
 import { title, subtitle } from "@/app/_components/primitives";
@@ -22,7 +22,7 @@ export default function Home() {
         <div className="flex flex-col w-1/2 h-full justify-center gap-6">
 				  <m.h1 initial={{opacity: 0, y:20}} animate={{opacity: 1, y: 0}} className={clsx(title({ size: "xl"}), 'text-foreground/60')}>AMALGAMA</m.h1>
           <p>Algun super texto aquí para hablar de la plataforma</p>
-          <button className="bg-background w-48 h-12 rounded-full text-foreground mt-6">EMPIEZA AHORA</button>
+          <Button as={Link} href="/courses" radius="full" className="bg-background w-48 text-foreground" size="lg">EMPIEZA AHORA</Button>
         </div>
 			</section>
 			{/* <section className="inline-block max-w-lg text-center justify-center">
