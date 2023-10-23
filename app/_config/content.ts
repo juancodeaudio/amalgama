@@ -61,10 +61,10 @@ export const siteContent = {
       classes: [
         {
           id: 210,
-          title: '',
-          slug: '',
-          description: '',
-          content: '',
+          title: 'Introducción',
+          slug: 'introduccion',
+          description: 'Comienza el camino',
+          content: 'lyrics1.mdx',
           duration: 1
         },
         {
@@ -102,10 +102,10 @@ export const siteContent = {
       classes: [
         {
           id: 310,
-          title: '',
-          slug: '',
-          description: '',
-          content: '',
+          title: 'Introducción',
+          slug: 'introduccion',
+          description: 'Comienza el camino',
+          content: 'lyrics1.mdx',
           duration: 1
         },
         {
