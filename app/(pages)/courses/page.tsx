@@ -15,7 +15,7 @@ export default async function Courses() {
 				<h1 className={clsx(title({ size: 'lg' }), 'text-primary')}>Cursos</h1>
         <div className="w-screen h-5/6 flex flex-col lg:flex-row gap-8 md:gap-10 xl:gap-20 py-5 px-10 xl:px-40 overflow-x-scroll">
           { courses &&
-            courses.map((course) => (
+            siteContent.courses.map((course) => (
               <CourseCard
                 key={course.slug}
                 courseTitle={course.title}

@@ -1,10 +1,10 @@
 import "./_styles/globals.css"
 import { Metadata } from "next";
+import { ClerkProvider } from '@clerk/nextjs'
 import { siteConfig } from "@/app/_config/site";
 import { fontSans, fontMagilio, fontMigha } from "@/app/_config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/app/_components/navbar/navbar";
-import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 
 import Footer from "./_components/footer";
@@ -32,22 +32,24 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<head />
-			<body
-				className={clsx(
-					"font-sans antialiased",
-					fontSans.variable,
-          fontMagilio.variable,
-          fontMigha.variable,
-				)}
-			>
-				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-					<Navbar />
-					{children}
-					<Footer />
-				</Providers>
-			</body>
-		</html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body
+          className={clsx(
+            "font-sans antialiased",
+            fontSans.variable,
+            fontMagilio.variable,
+            fontMigha.variable,
+          )}
+        >
+          <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+            <Navbar />
+            {children}
+            <Footer />
+          </Providers>
+        </body>
+      </html>
+    </ClerkProvider>
 	);
 }
