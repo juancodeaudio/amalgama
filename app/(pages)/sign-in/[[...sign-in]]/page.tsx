@@ -3,6 +3,9 @@ import { SignIn } from '@clerk/nextjs'
 const Page = async () => {
 
   return (
+    <main
+      className="flex flex-col h-screen items-center justify-center -mt-16 mx-auto w-screen px-40 bg-[rgb(186,189,244)] bg-[linear-gradient(135deg,rgba(186,189,244,1)0%,rgba(178,158,228,1)25%,rgba(229,150,225,1)50%,rgba(172,130,200,1)75%,rgba(216,131,187,1)100%)]"
+    >
     <section className='py-24'>
       <div className='w-full'>
         <div className='flex justify-center'>
@@ -26,6 +29,7 @@ const Page = async () => {
         </div>
       </div>
     </section>
+    </main>
   )
 }
 

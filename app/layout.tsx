@@ -1,6 +1,8 @@
 import "./_styles/globals.css"
 import { Metadata } from "next";
 import { ClerkProvider } from '@clerk/nextjs'
+import { dark } from '@clerk/themes';
+import { esES } from "@clerk/localizations";
 import { siteConfig } from "@/app/_config/site";
 import { fontSans, fontMagilio, fontMigha } from "@/app/_config/fonts";
 import { Providers } from "./providers";
@@ -32,7 +34,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-    <ClerkProvider>
+    <ClerkProvider localization={esES} appearance={{ baseTheme: dark }}>
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
