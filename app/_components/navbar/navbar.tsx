@@ -29,7 +29,7 @@ import UserDropdown from "./user-dropdown";
 import UserButtons from './user-buttons';
 import { Button } from '@nextui-org/button';
 
-export const Navbar = async () => {
+export const Navbar = () => {
 	const searchInput = (
 		<Input
 			aria-label="Search"
