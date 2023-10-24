@@ -7,7 +7,8 @@ import { siteContent } from "@/app/_config/content";
 import clsx from "clsx";
 
 export default async function Courses() {
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies()
+  const supabase = createServerComponentClient({ cookies: () => cookieStore })
   const { data: courses } = await supabase.from('courses').select('*, classes(*)');
 	return (
 		<main className="flex flex-col items-center justify-center w-screen px-10">
