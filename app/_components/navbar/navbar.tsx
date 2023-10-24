@@ -25,9 +25,7 @@ import {
 } from "@/app/_components/icons";
 
 import { Logo } from "@/app/_components/icons";
-import UserDropdown from "./user-dropdown";
 import UserButtons from './user-buttons';
-import { Button } from '@nextui-org/button';
 
 export const Navbar = () => {
 	const searchInput = (
