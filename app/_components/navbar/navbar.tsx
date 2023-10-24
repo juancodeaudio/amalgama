@@ -26,8 +26,10 @@ import {
 
 import { Logo } from "@/app/_components/icons";
 import UserDropdown from "./user-dropdown";
+import UserButtons from './user-buttons';
+import { Button } from '@nextui-org/button';
 
-export const Navbar = () => {
+export const Navbar = async () => {
 	const searchInput = (
 		<Input
 			aria-label="Search"
@@ -84,9 +86,7 @@ export const Navbar = () => {
 					<ThemeSwitch />
 				</NavbarItem>
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-				<NavbarItem className="hidden lg:flex">
-					<UserDropdown />
-				</NavbarItem>
+        <UserButtons />
 			</NavbarContent>
 
 			<NavbarContent className="lg:hidden basis-1 pl-4" justify="end">
