@@ -1,13 +1,23 @@
 
 import clsx from "clsx"
 import { title } from "../primitives"
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers';
+import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { cookies } from 'next/headers'
 import CourseCard from "./course-card";
 
 const CoursesSection = async () => {
   const cookieStore = cookies()
-  const supabase = createServerComponentClient({ cookies: () => cookieStore })
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value
+        },
+      },
+    }
+  )
   const { data: courses } = await supabase.from('courses').select('*, classes(*)');
   return (
     <section className="flex flex-col w-full py-12 gap-10 items-center">

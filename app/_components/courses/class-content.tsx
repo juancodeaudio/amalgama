@@ -5,10 +5,11 @@ import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card"
 import { Button } from "@nextui-org/button"
 import { HiOutlineChevronDoubleLeft, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { SiteContent } from "@/app/_config/content";
+import { Tables } from "@/app/_types/supabase";
 
 type ClassContentType = {
   courseSlug: string,
-  classData: SiteContent['courses'][0]['classes'][0],
+  classData: Tables<'classes'>,
   getPrevClass: () => void,
   getNextClass: () => void,
   setTableIsActive: (value: boolean) => void
