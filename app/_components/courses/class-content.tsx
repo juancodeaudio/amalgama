@@ -4,7 +4,6 @@ import { title } from "../primitives";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card"
 import { Button } from "@nextui-org/button"
 import { HiOutlineChevronDoubleLeft, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
-import { SiteContent } from "@/app/_config/content";
 import { Tables } from "@/app/_types/supabase";
 
 type ClassContentType = {
@@ -17,7 +16,19 @@ type ClassContentType = {
 
 const ClassContent = ({ courseSlug, classData, getPrevClass, getNextClass, setTableIsActive }: ClassContentType) => {
 
+  // const router = useRouter();
   const Content = dynamic(() => import(`@/app/_content/${courseSlug}/${classData.content}`));
+  const handlePrevClass = () => {
+    const prevClassData = getPrevClass()
+    console.log('Prev class Data After: ', prevClassData)
+    // router.push({
+    //   query: { class: prevClassData?.slug }
+    // })
+  }
+  const handleNextClass = () => {
+    const nextClassData = getNextClass()
+    console.log('Next class Data After: ', nextClassData)
+  }
 
   return (
     <Card className="relative w-full h-[90vh] bg-background">
@@ -33,8 +44,8 @@ const ClassContent = ({ courseSlug, classData, getPrevClass, getNextClass, setTa
       </CardBody>
       <CardFooter className="h-28 px-14">
         <div className="flex gap-4 ml-auto">
-          <Button onPress={getPrevClass} startContent={<HiChevronLeft />} isIconOnly variant="bordered" />
-          <Button onPress={getNextClass} endContent={<HiChevronRight />}>Siguiente</Button>
+          <Button onPress={handlePrevClass} startContent={<HiChevronLeft />} isIconOnly variant="bordered" />
+          <Button onPress={handleNextClass} endContent={<HiChevronRight />}>Siguiente</Button>
         </div>
       </CardFooter>
     </Card>
