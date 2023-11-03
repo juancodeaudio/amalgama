@@ -45,7 +45,6 @@ const CoursePage = ({ params }: { params: { slug: string }}) => {
           class: prevClassData.slug
         })}`)
       }
-      return prevClassData
     }
   }
   const nextClass = () => {
@@ -57,7 +56,6 @@ const CoursePage = ({ params }: { params: { slug: string }}) => {
           class: nextClassData.slug
         })}`)
       }
-      return nextClassData
     }
   }
 
@@ -75,7 +73,10 @@ const CoursePage = ({ params }: { params: { slug: string }}) => {
           (!!courseInfo && !!selectedClassData) &&
           <ClassContent courseSlug={courseInfo.slug} classData={selectedClassData} getPrevClass={prevClass} getNextClass={nextClass} setTableIsActive={setTableIsActive}/>
         }
-        <CommentsSection />
+        {
+          !!selectedClassData &&
+          <CommentsSection />
+        }
       </section>
     </main>
 	);

@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { title } from "../primitives";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card"
 import { Button } from "@nextui-org/button"
+import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { HiOutlineChevronDoubleLeft, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { Tables } from "@/app/_types/supabase";
 
@@ -19,28 +20,23 @@ const ClassContent = ({ courseSlug, classData, getPrevClass, getNextClass, setTa
   // const router = useRouter();
   const Content = dynamic(() => import(`@/app/_content/${courseSlug}/${classData.content}`));
   const handlePrevClass = () => {
-    const prevClassData = getPrevClass()
-    console.log('Prev class Data After: ', prevClassData)
-    // router.push({
-    //   query: { class: prevClassData?.slug }
-    // })
+    getPrevClass()
   }
   const handleNextClass = () => {
-    const nextClassData = getNextClass()
-    console.log('Next class Data After: ', nextClassData)
+    getNextClass()
   }
 
   return (
     <Card className="relative w-full h-[90vh] bg-background">
-      <CardHeader className="w-full flex justify-center pt-20">
+      <CardHeader className="w-full flex justify-center pt-20 pb-0">
         <Button onPress={() => setTableIsActive(true)} variant="flat" isIconOnly className="absolute top-4 left-4 lg:hidden"><HiOutlineChevronDoubleLeft /></Button>
         <h2 className={clsx(title({ size:'md'}), 'text-secondary')}>{classData.title}</h2>
       </CardHeader>
-      <CardBody className="w-full h-[80vh] flex flex-col items-center pt-10">
+      <CardBody className="w-full h-[80vh] flex flex-col items-center pt-10 gap-6">
         <h3 className={clsx(title({ size:'sm'}), 'text-foreground/50')}>{classData.description}</h3>
-        <div className="prose my-10 text-foreground">
+        <ScrollShadow hideScrollBar className="prose text-foreground">
           <Content />
-        </div>
+        </ScrollShadow>
       </CardBody>
       <CardFooter className="h-28 px-14">
         <div className="flex gap-4 ml-auto">
