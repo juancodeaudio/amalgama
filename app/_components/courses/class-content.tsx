@@ -39,7 +39,7 @@ const ClassContent = ({ courseSlug, classData, getPrevClass, getNextClass, setTa
       </CardBody>
       <CardFooter className="h-28 px-14">
         <div className="flex gap-4 ml-auto">
-          <Button onPress={handlePrevClass} startContent={<HiChevronLeft />} isIconOnly variant="bordered" />
+          <Button className={classData.class_number === 1 ? 'hidden' : ''} onPress={handlePrevClass} startContent={<HiChevronLeft />} isIconOnly variant="bordered" />
           <Button onPress={handleNextClass} endContent={<HiChevronRight />}>Siguiente</Button>
         </div>
       </CardFooter>

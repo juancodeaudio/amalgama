@@ -12,12 +12,14 @@ import { createBrowserClient } from '@supabase/ssr';
 import { getUsers } from '@/app/actions'
 import type { User } from "@clerk/nextjs/dist/types/server";
 import { stringifyDate } from "@/app/_utils/stringifyDate";
+import { useAuth } from '@clerk/nextjs'
 
 
 const CommentsSection = () => {
   const [commentsData, setCommentsData] = useState<Tables<'comments'>[] | null>(null)
   const [usersData, setUsersData] = useState<User[]>([])
   const [classID, setClassID] = useState<string>("")
+  const { userId } = useAuth();
   const searchParams = useSearchParams()
   const selectedClass = searchParams.get("class")
   const supabase = createBrowserClient(
@@ -46,7 +48,9 @@ const CommentsSection = () => {
       if(classInfo) {
         setCommentsData(classInfo[0].comments)
         setClassID(classInfo[0].id)
-        getUserName(users, classInfo[0].comments[0].user_id)
+        if(classInfo[0].comments.length > 0) {
+          getUserName(users, classInfo[0].comments[0].user_id)
+        }
       }
       setUsersData(users)
     }
@@ -54,8 +58,6 @@ const CommentsSection = () => {
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedClass])
-  console.log('CommentsData: ', commentsData)
-  console.log('UsersData: ', usersData)
 
   return (
     <Card className="w-full bg-background">
@@ -81,7 +83,7 @@ const CommentsSection = () => {
                 authorImage={getUserImage(usersData, comment.user_id)}
                 date={stringifyDate(comment.created_at)}
                 content={comment.content}
-                isDeletable={comment.user_id === comment.user_id}
+                isDeletable={comment.user_id === userId}
               />
             ))
             : <div className="text-center">

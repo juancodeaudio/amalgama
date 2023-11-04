@@ -3,9 +3,11 @@ import clsx from "clsx"
 import { title } from "../primitives"
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import { auth } from '@clerk/nextjs';
 import CourseCard from "./course-card";
 
 const CoursesSection = async () => {
+  const { userId } : { userId: string | null } = auth();
   const cookieStore = cookies()
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -19,6 +21,8 @@ const CoursesSection = async () => {
     }
   )
   const { data: courses } = await supabase.from('courses').select('*, classes(*)');
+  const { data: likes } = await supabase.from('likes').select('*').eq('user_id', userId);
+  const likedCourses = likes?.map((like) => like.course_id);
   return (
     <section className="flex flex-col w-full py-12 gap-10 items-center">
       <h1 className={clsx(title({ size: 'lg' }), 'text-primary')}>Cursos</h1>
@@ -26,6 +30,8 @@ const CoursesSection = async () => {
         { courses && 
           courses.map((course) => (
             <CourseCard
+              likedCourses={likedCourses}
+              courseID={course.id}
               key={course.slug}
               courseTitle={course.title}
               description={course.description}

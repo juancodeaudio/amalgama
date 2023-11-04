@@ -1,19 +1,58 @@
+'use client'
+
+import { useState, useEffect } from "react";
+import { createClient } from '@supabase/supabase-js';
+import { useAuth } from '@clerk/nextjs'
 import Link from "next/link";
-import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card"
+import { Card, CardBody } from "@nextui-org/card"
 import { Image } from "@nextui-org/image"
 import { Button } from "@nextui-org/button";
 import { title } from "@/app/_components/primitives";
-import clsx from "clsx";
 import { HiHeart, HiArrowRight } from "react-icons/hi2";
 
 type CourseCardProps = {
+  likedCourses: string[] | undefined,
+  courseID: string,
   courseTitle: string,
   description: string,
   courseImage: string,
-  href: string
+  href: string,
 }
 
-const CourseCard = ({courseTitle, description, courseImage, href}: CourseCardProps) => {
+const CourseCard = ({ likedCourses, courseID, courseTitle, description, courseImage, href }: CourseCardProps) => {
+  const [isLiked, setIsLiked] = useState<boolean>(false);
+  const { getToken, userId } = useAuth();
+  useEffect(() => {
+    if(likedCourses) {
+      setIsLiked(likedCourses.includes(courseID))
+    }
+  }, [likedCourses, courseID])
+
+  const handleLike = async () => {
+    const supabaseAccessToken = await getToken({
+      template: "supabase",
+    });
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        global: { headers: { Authorization: `Bearer ${supabaseAccessToken}` } },
+      }
+    );
+    if(isLiked) {
+      const { error } = await supabase.from('likes').delete().eq('course_id', courseID);
+      if(error) {
+        console.log(error)
+      }
+      setIsLiked(false)
+    } else {
+      const { error } = await supabase.from('likes').insert({ user_id: userId, course_id: courseID });
+      if(error) {
+        console.log(error)
+      }
+      setIsLiked(true)
+    }
+  }
   return (
     <Card 
       isBlurred
@@ -41,8 +80,9 @@ const CourseCard = ({courseTitle, description, courseImage, href}: CourseCardPro
                 <p className="text-tiny opacity-70">4 horas</p>
               </div>
               <Button
-                className={"text-foreground border-default-200 ml-auto"}
-                color="primary"
+                onPress={handleLike}
+                className={` ${isLiked ? 'text-primary' : 'text-foreground'} border-default-200 ml-auto`}
+                color={ isLiked ? "primary" : "default" }
                 radius="full"
                 size="sm"
                 variant="flat"
@@ -63,31 +103,6 @@ const CourseCard = ({courseTitle, description, courseImage, href}: CourseCardPro
           </div>
         </div>
       </CardBody>
-      {/* <CardFooter className="bg-white/10 h-14 lg:h-24 px-6 justify-between">
-        <div>
-          <p className="text-tiny">5 Lecciones</p>
-          <p className="text-tiny">4 horas</p>
-        </div>
-        <Button
-          className={"text-foreground border-default-200 ml-auto"}
-          color="primary"
-          radius="full"
-          size="sm"
-          variant="flat"
-          startContent={<HiHeart className="h-5 w-5" />}
-          isIconOnly
-        />
-        <Link href={href}>
-          <Button
-            className="text-tiny ml-4 w-16"
-            color="primary"
-            radius="full"
-            size="sm"
-            startContent={<HiArrowRight className="h-5 w-5" />}
-            isIconOnly
-          />
-        </Link>
-      </CardFooter> */}
     </Card>
   )
 }

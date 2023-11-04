@@ -20,7 +20,6 @@ const CommentsForm = ({ classId, commentsData, setCommentsData }: ClassCommentsP
 
   const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     const commentValue = event.target.value;
-    console.log(commentValue);
     setNewComment(commentValue);
   };
 
