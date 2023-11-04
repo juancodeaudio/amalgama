@@ -17,7 +17,6 @@ type ClassContentType = {
 
 const ClassContent = ({ courseSlug, classData, getPrevClass, getNextClass, setTableIsActive }: ClassContentType) => {
 
-  // const router = useRouter();
   const Content = dynamic(() => import(`@/app/_content/${courseSlug}/${classData.content}`));
   const handlePrevClass = () => {
     getPrevClass()

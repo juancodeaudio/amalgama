@@ -7,13 +7,16 @@ import { title } from "../primitives"
 import CommentsForm from "./comments-form"
 import CommentBox from "./comment-box"
 import { Card, CardBody } from "@nextui-org/card"
-import { siteContent } from "@/app/_config/content";
 import { Tables, DbResult } from "@/app/_types/supabase";
 import { createBrowserClient } from '@supabase/ssr';
-import { Clerk } from '@clerk/backend';
+import { getUsers } from '@/app/actions'
+import type { User } from "@clerk/nextjs/dist/types/server";
+import { stringifyDate } from "@/app/_utils/stringifyDate";
+
 
 const CommentsSection = () => {
   const [commentsData, setCommentsData] = useState<Tables<'comments'>[] | null>(null)
+  const [usersData, setUsersData] = useState<User[]>([])
   const [classID, setClassID] = useState<string>("")
   const searchParams = useSearchParams()
   const selectedClass = searchParams.get("class")
@@ -21,7 +24,17 @@ const CommentsSection = () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
-  const clerk = Clerk({ apiKey: '...' });
+  const getUserName = (users: User[], userId: string) => {
+    const user = users.find(user => user.id === userId)
+    if(user?.firstName === undefined || user?.lastName === undefined) {
+      return 'Usuario'
+    }
+    return `${user?.firstName} ${user?.lastName}`
+  }
+  const getUserImage = (users: User[], userId: string) => {
+    const user = users.find(user => user.id === userId)
+    return `${user?.imageUrl}`
+  }
   useEffect(() => {
     const getCommentsData = async () => {
       const query = supabase.from('classes').select(`
@@ -29,27 +42,20 @@ const CommentsSection = () => {
         comments (*)
       `).eq('slug', selectedClass)
       const { data: classInfo }: DbResult<typeof query> = await query
-      classInfo && setCommentsData(classInfo[0].comments)
-      classInfo && setClassID(classInfo[0].id)
-      const userList = await clerk.users.getUser('user_2XAS5JO1pblqi1ff9b5zIpIB1L0');
-      console.log(userList);
+      const users = await getUsers()
+      if(classInfo) {
+        setCommentsData(classInfo[0].comments)
+        setClassID(classInfo[0].id)
+        getUserName(users, classInfo[0].comments[0].user_id)
+      }
+      setUsersData(users)
     }
-    
-
     getCommentsData()
-
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedClass])
-
-  const stringifyDate = (date: string) => {
-    const timeStamp = Date.parse(date)
-    const localeDate = new Date(timeStamp).toLocaleDateString(
-      'es-CO', 
-      { year: 'numeric', month: 'short', day: 'numeric' }
-    )
-    return localeDate
-  }
+  console.log('CommentsData: ', commentsData)
+  console.log('UsersData: ', usersData)
 
   return (
     <Card className="w-full bg-background">
@@ -71,8 +77,8 @@ const CommentsSection = () => {
                 key={index}
                 setCommentsData={setCommentsData}
                 commentId={comment.id}
-                authorName={comment.user_id}
-                authorImage='https://flowbite.com/docs/images/people/profile-picture-2.jpg'
+                authorName={getUserName(usersData, comment.user_id)}
+                authorImage={getUserImage(usersData, comment.user_id)}
                 date={stringifyDate(comment.created_at)}
                 content={comment.content}
                 isDeletable={comment.user_id === comment.user_id}
@@ -82,18 +88,6 @@ const CommentsSection = () => {
               <p className="text-foreground/70 text-xl">Parece que no hay comentarios aún...</p>
             </div>
           }
-          {/* {
-            siteContent.comments.map((comment, index) => (
-              <CommentBox
-                key={index}
-                authorName={comment.authorName}
-                authorImage={comment.authorImage}
-                date={comment.date}
-                content={comment.content}
-              />
-            )
-            )
-          } */}
         </div>
       </CardBody>
     </Card>

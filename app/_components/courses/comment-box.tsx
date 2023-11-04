@@ -36,8 +36,8 @@ const CommentBox = ({commentId, setCommentsData, authorName, authorImage, date, 
     if (ok) {
       const { error } = await supabase.from("comments").delete().match({ id });
       if (!error) {
-        setCommentsData && setCommentsData((prev: any) => prev.filter((comment: any) => comment.id !== id));
         window.alert("Deleted Comment :)");
+        setCommentsData && setCommentsData((prev: any) => prev.filter((comment: any) => comment.id !== id));
       } else {
         window.alert(error?.message);
       }
@@ -53,7 +53,9 @@ const CommentBox = ({commentId, setCommentsData, authorName, authorImage, date, 
             description={date}
             avatarProps={{
               size: "sm",
-              src: authorImage
+              src: authorImage,
+              name: '',
+              showFallback: true,
             }}
           />
         </div>
