@@ -37,6 +37,7 @@ const CoursesSection = async () => {
               description={course.description}
               courseImage={course.image}
               href={`/courses/${course.slug}?class=${course.classes[0].slug}`}
+              totalClasses={course.classes.length}
             />
           ))
         }

@@ -17,9 +17,10 @@ type CourseCardProps = {
   description: string,
   courseImage: string,
   href: string,
+  totalClasses: number
 }
 
-const CourseCard = ({ likedCourses, courseID, courseTitle, description, courseImage, href }: CourseCardProps) => {
+const CourseCard = ({ likedCourses, courseID, courseTitle, description, courseImage, href, totalClasses }: CourseCardProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const { getToken, userId } = useAuth();
   useEffect(() => {
@@ -76,7 +77,7 @@ const CourseCard = ({ likedCourses, courseID, courseTitle, description, courseIm
             <p className="opacity-70">{description}</p>
             <div className="flex mt-5">
               <div>
-                <p className="text-tiny opacity-70">5 Lecciones</p>
+                <p className="text-tiny opacity-70">{`${totalClasses} Lecciones`}</p>
                 <p className="text-tiny opacity-70">4 horas</p>
               </div>
               <Button
