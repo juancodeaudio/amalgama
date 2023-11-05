@@ -2,23 +2,27 @@
 
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { Button } from '@nextui-org/button'
-import { createBrowserClient } from '@supabase/ssr'
 import { HiPaperAirplane } from 'react-icons/hi2'
-import { Tables } from '@/app/_types/supabase'
+import { Tables, CommentWithReplies } from '@/app/_types/supabase'
 import { useAuth } from '@clerk/nextjs'
 import { createClient } from '@supabase/supabase-js';
+import {Textarea} from "@nextui-org/input";
+import {Chip} from "@nextui-org/chip";
+import { HiArrowUturnLeft } from "react-icons/hi2"
 
 type ClassCommentsProps = {
   classId: string,
-  commentsData: Tables<'comments'>[] | null,
-  setCommentsData: (value: Tables<'comments'>[]) => void
+  commentsData: CommentWithReplies[] | null,
+  setCommentsData: (value: CommentWithReplies[]) => void,
+  replyOf: string | null,
+  setReplyOf: (value: string | null) => void
 }
 
-const CommentsForm = ({ classId, commentsData, setCommentsData }: ClassCommentsProps) => {
+const CommentsForm = ({ classId, commentsData, setCommentsData, replyOf, setReplyOf }: ClassCommentsProps) => {
   const [newComment, setNewComment] = useState<string>("");
   const { getToken, userId } = useAuth();
 
-  const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const commentValue = event.target.value;
     setNewComment(commentValue);
   };
@@ -41,7 +45,7 @@ const CommentsForm = ({ classId, commentsData, setCommentsData }: ClassCommentsP
     );
     const { data } = await supabase
       .from("comments")
-      .insert({ content: newComment, user_id: userId, class_id: classId })
+      .insert({ content: newComment, user_id: userId, class_id: classId, reply_of: replyOf })
       .select()
 
     if (data != null && commentsData != null) {
@@ -55,22 +59,28 @@ const CommentsForm = ({ classId, commentsData, setCommentsData }: ClassCommentsP
       onSubmit={handleSubmit}
       className="mb-6"
     >
-      <div className="py-2 px-4 mb-4 bg-foreground/10 rounded-lg rounded-t-lg border border-gray-200 dark:border-gray-700">
-        <label className="sr-only">Your comment</label>
-        <textarea
-          id="comment"
-          value={newComment}
-          onChange={onChange}
-          rows={6}
-          className="px-0 w-full text-sm text-foreground border-0 focus:ring-0 focus:outline-none dark:placeholder-foreground/60 bg-transparent"
-          placeholder="Write a comment..."
-          required
-        />
-      </div>
+      {replyOf && (
+        <Chip
+          color='secondary'
+          variant='flat'
+          startContent={<HiArrowUturnLeft />}
+          onClose={() => setReplyOf(null)}
+          className='italic mt-1 mb-2'
+        >
+          {replyOf}
+        </Chip>
+      )}
+      <Textarea 
+        value={newComment}
+        onChange={onChange}
+        variant='faded'
+        placeholder="Escribe tu comentario..."
+        required
+      />
       <Button
         type="submit"
         color='secondary'
-        className='text-background'
+        className='text-background mt-3'
         endContent={<HiPaperAirplane />}
       >
         Enviar

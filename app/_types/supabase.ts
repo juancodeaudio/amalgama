@@ -176,6 +176,9 @@ export type CoursesWithClasses = Tables<'courses'> & {
 export type ClassesWithComments = Tables<'classes'> & {
 	classes: Tables<'comments'>[];
 }
+export type CommentWithReplies = Tables<'comments'> & {
+	replies?: Tables<'comments'>[];
+}
 
 export type DbResult<T> = T extends PromiseLike<infer U> ? U : never
 export type DbResultOk<T> = T extends PromiseLike<{ data: infer U }> ? Exclude<U, null> : never

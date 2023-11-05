@@ -11,12 +11,14 @@ import { Tables, DbResult } from "@/app/_types/supabase";
 import { createBrowserClient } from '@supabase/ssr';
 import { getUsers } from '@/app/actions'
 import type { User } from "@clerk/nextjs/dist/types/server";
-import { stringifyDate } from "@/app/_utils/stringifyDate";
+import { buildCommentsTree } from "@/app/_utils/buildCommentsTree";
 import { useAuth } from '@clerk/nextjs'
+import { CommentWithReplies } from "@/app/_types/supabase"
 
 
 const CommentsSection = () => {
-  const [commentsData, setCommentsData] = useState<Tables<'comments'>[] | null>(null)
+  const [commentsData, setCommentsData] = useState<CommentWithReplies[] | null>(null)
+  const [replyOf, setReplyOf] = useState<string | null>(null);
   const [usersData, setUsersData] = useState<User[]>([])
   const [classID, setClassID] = useState<string>("")
   const { userId } = useAuth();
@@ -44,9 +46,11 @@ const CommentsSection = () => {
         comments (*)
       `).eq('slug', selectedClass)
       const { data: classInfo }: DbResult<typeof query> = await query
+      console.log(classInfo)
       const users = await getUsers()
       if(classInfo) {
-        setCommentsData(classInfo[0].comments)
+        const commentsTree = buildCommentsTree(classInfo[0].comments)
+        setCommentsData(commentsTree)
         setClassID(classInfo[0].id)
         if(classInfo[0].comments.length > 0) {
           getUserName(users, classInfo[0].comments[0].user_id)
@@ -66,9 +70,9 @@ const CommentsSection = () => {
           <div className="flex justify-between items-center mb-6">
             <h2 className={clsx(title({ size:'sm'}), 'text-foreground')}>Comentarios ({commentsData?.length})</h2>
           </div>
-          <CommentsForm classId={classID} commentsData={commentsData} setCommentsData={setCommentsData}/>
+          <CommentsForm classId={classID} commentsData={commentsData} setCommentsData={setCommentsData} replyOf={replyOf} setReplyOf={setReplyOf}/>
           { 
-            (commentsData?.length) && 
+            (commentsData) && 
             commentsData.length > 0
             ? commentsData?.sort((a, b) => {
               const aDate = new Date(a.created_at);
@@ -77,13 +81,14 @@ const CommentsSection = () => {
             }).map((comment, index) => (
               <CommentBox
                 key={index}
+                comment={comment}
                 setCommentsData={setCommentsData}
-                commentId={comment.id}
+                commentReplies={comment.replies}
                 authorName={getUserName(usersData, comment.user_id)}
                 authorImage={getUserImage(usersData, comment.user_id)}
-                date={stringifyDate(comment.created_at)}
-                content={comment.content}
                 isDeletable={comment.user_id === userId}
+                setReplyOf={setReplyOf}
+                isReply={false}
               />
             ))
             : <div className="text-center">
