@@ -1,18 +1,23 @@
 'use client'
+
+import { useAuth } from "@clerk/nextjs";
+import { createClient } from "@supabase/supabase-js";
+import { getUserInfo } from "@/utils/getUserInfo";
 import type { User as UserTypes } from "@clerk/nextjs/dist/types/server";
+
+import CommentboxOptions from "@/components/courses/commentbox-options";
+import CommentsForm from "@/components/courses/comments-form";
+import DeleteComment from "@/components/courses/delete-comment";
+
+import { stringifyDate } from "@/utils/stringifyDate";
+import { CommentWithReplies } from "@/types/supabase";
+
+import { toast } from "sonner";
 import { Button } from "@nextui-org/button";
 import { User} from "@nextui-org/user";
 import { useDisclosure } from '@nextui-org/modal'
-import { useAuth } from "@clerk/nextjs";
-import { createClient } from "@supabase/supabase-js";
+
 import { HiArrowUturnLeft } from "react-icons/hi2";
-import { CommentWithReplies } from "@/app/_types/supabase";
-import { stringifyDate } from "@/app/_utils/stringifyDate";
-import CommentsForm from "./comments-form";
-import { getUserInfo } from "@/app/_utils/getUserInfo";
-import CommentboxOptions from "@/app/_components/courses/commentbox-options";
-import DeleteComment from "./delete-comment";
-import { toast } from "sonner";
 
 type CommentType = {
   comment: CommentWithReplies,

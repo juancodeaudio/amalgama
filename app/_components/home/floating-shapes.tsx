@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+
 import { useMotionValue, useSpring, MotionValue } from "framer-motion"
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'

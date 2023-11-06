@@ -1,5 +1,4 @@
-import { Link } from "@nextui-org/link"
-import { Logo } from "@/app/_components/icons";
+import { Logo } from "@/components/icons";
 
 const Footer = () => {
   return (

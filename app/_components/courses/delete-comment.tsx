@@ -1,5 +1,6 @@
 import { Modal, ModalContent, ModalBody, ModalFooter, ModalHeader } from '@nextui-org/modal'
 import { Button } from '@nextui-org/button'
+
 import { HiOutlineExclamationTriangle } from "react-icons/hi2"
 
 type DeleteCommentProps = {

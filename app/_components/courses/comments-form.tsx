@@ -1,14 +1,17 @@
 'use client'
 
 import { useState, ChangeEvent, FormEvent } from 'react'
-import { Button } from '@nextui-org/button'
-import { HiPaperAirplane } from 'react-icons/hi2'
-import { CommentWithReplies } from '@/app/_types/supabase'
+
 import { useAuth } from '@clerk/nextjs'
 import { createClient } from '@supabase/supabase-js';
+
+import { CommentWithReplies } from '@/types/supabase'
+
+import { Button } from '@nextui-org/button'
 import {Textarea} from "@nextui-org/input";
 import {Chip} from "@nextui-org/chip";
-import { HiArrowUturnLeft } from "react-icons/hi2"
+
+import { HiArrowUturnLeft, HiPaperAirplane } from "react-icons/hi2"
 
 type ClassCommentsProps = {
   authorName?: string,

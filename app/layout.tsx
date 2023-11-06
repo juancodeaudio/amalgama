@@ -1,15 +1,17 @@
-import "./_styles/globals.css"
+import clsx from "clsx";
 import { Metadata } from "next";
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes';
 import { esES } from "@clerk/localizations";
-import { siteConfig } from "@/app/_config/site";
-import { fontSans, fontMagilio, fontMigha } from "@/app/_config/fonts";
-import { Providers } from "./providers";
-import { Navbar } from "@/app/_components/navbar/navbar";
-import clsx from "clsx";
 
-import Footer from "./_components/footer";
+import { Navbar } from "@/components/navbar/navbar";
+import Footer from "@/components/footer";
+
+import "@/styles/globals.css"
+import { siteConfig } from "@/config/site";
+import { fontSans, fontMagilio, fontMigha } from "@/config/fonts";
+import { Providers } from "./providers";
+
 
 export const metadata: Metadata = {
 	title: {

@@ -1,8 +1,11 @@
 'use client'
+
+import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
+
+import UserDropdown from '@/components/navbar/user-dropdown';
+
 import { NavbarItem } from '@nextui-org/navbar';
 import { Button } from '@nextui-org/button';
-import UserDropdown from './user-dropdown';
-import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const UserButtons = () => {
   return (
@@ -10,7 +13,6 @@ const UserButtons = () => {
     <SignedIn>
       <NavbarItem className="hidden lg:flex">
         <UserDropdown />
-        {/* <UserButton /> */}
       </NavbarItem>
     </SignedIn>
     <SignedOut>

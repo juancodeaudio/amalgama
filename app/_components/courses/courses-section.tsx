@@ -1,10 +1,11 @@
-
 import clsx from "clsx"
-import { title } from "../primitives"
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
+import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { auth } from '@clerk/nextjs';
-import CourseCard from "./course-card";
+
+import CourseCard from "@/components/courses/course-card";
+
+import { title } from "@/components/primitives"
 
 const CoursesSection = async () => {
   const { userId } : { userId: string | null } = auth();

@@ -23,6 +23,10 @@
       "@/*": ["./*"],
       "@/components/*": ["./app/_components/*"],
       "@/styles/*": ["./app/_styles/*"],
+      "@/types/*": ["./app/_types/*"],
+      "@/utils/*": ["./app/_utils/*"],
+      "@/fonts/*": ["./app/_fonts/*"],
+      "@/config/*": ["./app/_config/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "mdx-components.jsx"],

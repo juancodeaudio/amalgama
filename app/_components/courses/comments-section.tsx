@@ -1,19 +1,24 @@
 'use client'
 
 import { useState, useEffect } from "react";
+
 import clsx from "clsx"
 import { useSearchParams } from "next/navigation"
-import { title } from "../primitives"
-import CommentsForm from "./comments-form"
-import CommentBox from "./comment-box"
-import { Card, CardBody } from "@nextui-org/card"
-import { DbResult, CommentWithReplies } from "@/app/_types/supabase";
 import { createBrowserClient } from '@supabase/ssr';
-import { getUsers } from '@/app/actions'
-import type { User } from "@clerk/nextjs/dist/types/server";
-import { buildCommentsTree } from "@/app/_utils/buildCommentsTree";
 import { useAuth } from '@clerk/nextjs'
+import type { User } from "@clerk/nextjs/dist/types/server";
+
+import CommentsForm from "@/components/courses/comments-form"
+import CommentBox from "@/components/courses/comment-box"
+
+import { title } from "@/components/primitives"
+import { getUsers } from '@/app/actions'
+import { buildCommentsTree } from "@/utils/buildCommentsTree";
+
+import { DbResult, CommentWithReplies } from "@/types/supabase";
+
 import { Toaster } from "sonner";
+import { Card, CardBody } from "@nextui-org/card"
 
 
 const CommentsSection = () => {

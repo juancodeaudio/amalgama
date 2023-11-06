@@ -1,5 +1,6 @@
 import { UserProfile } from "@clerk/nextjs";
-import SavedCourses from "@/app/_components/user-profile/saved-courses";
+
+import SavedCourses from "@/components/user-profile/saved-courses";
  
 const UserProfilePage = () => (
   <main className="flex">

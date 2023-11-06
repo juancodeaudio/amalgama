@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
-import {DropdownItem, DropdownTrigger, Dropdown, DropdownMenu} from "@nextui-org/dropdown";
 import { SignOutButton } from "@clerk/nextjs";
+
+import {DropdownItem, DropdownTrigger, Dropdown, DropdownMenu} from "@nextui-org/dropdown";
 import {Avatar} from "@nextui-org/avatar";
 
 const UserDropdown = () => {

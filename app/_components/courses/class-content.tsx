@@ -1,11 +1,15 @@
 import clsx from "clsx";
 import dynamic from 'next/dynamic';
-import { title } from "../primitives";
+
+import { title } from "@/components/primitives";
+
+import { Tables } from "@/types/supabase";
+
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card"
 import { Button } from "@nextui-org/button"
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
+
 import { HiOutlineChevronDoubleLeft, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
-import { Tables } from "@/app/_types/supabase";
 
 type ClassContentType = {
   courseSlug: string,

@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import { Button, ButtonGroup } from "@nextui-org/button";
+
 import { Link } from "@nextui-org/link";
-import { HiPlay, HiPause, HiMiniArrowDownTray } from "react-icons/hi2";
+
 import useSound from 'use-sound';
+import { Button, ButtonGroup } from "@nextui-org/button";
+import { HiPlay, HiPause, HiMiniArrowDownTray } from "react-icons/hi2";
 
 type PlayButtonProps = {
   file: string;

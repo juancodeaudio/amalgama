@@ -1,14 +1,17 @@
 'use client'
 
 import { useState, useEffect } from "react";
+
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from "next/navigation"
 import { motion as m } from "framer-motion";
-import CourseNav from "@/app/_components/courses/course-nav";
-import CommentsSection from "@/app/_components/courses/comments-section";
-import ClassContent from "@/app/_components/courses/class-content";
 import { createBrowserClient } from '@supabase/ssr';
-import { CoursesWithClasses, DbResult } from "@/app/_types/supabase";
+
+import CourseNav from "@/components/courses/course-nav";
+import CommentsSection from "@/components/courses/comments-section";
+import ClassContent from "@/components/courses/class-content";
+
+import { CoursesWithClasses, DbResult } from "@/types/supabase";
 
 const CoursePage = ({ params }: { params: { slug: string }}) => {
 

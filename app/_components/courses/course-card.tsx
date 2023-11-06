@@ -1,15 +1,19 @@
 'use client'
 
 import { useState, useEffect } from "react";
+
 import { createClient } from '@supabase/supabase-js';
 import { useAuth } from '@clerk/nextjs'
 import Link from "next/link";
+
+import { title } from "@/components/primitives";
+import { CoursesWithClasses } from "@/types/supabase";
+
 import { Card, CardBody } from "@nextui-org/card"
 import { Image } from "@nextui-org/image"
 import { Button } from "@nextui-org/button";
-import { title } from "@/app/_components/primitives";
+
 import { HiHeart, HiArrowRight } from "react-icons/hi2";
-import { CoursesWithClasses } from "@/app/_types/supabase";
 
 type CourseCardProps = {
   likedCourses: string[] | undefined,

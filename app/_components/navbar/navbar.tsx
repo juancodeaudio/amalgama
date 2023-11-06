@@ -1,3 +1,12 @@
+import NextLink from "next/link";
+import clsx from "clsx";
+
+import { ThemeSwitch } from "@/components/navbar/theme-switch";
+import UserButtons from '@/components/navbar/user-buttons';
+import { Logo, SearchIcon } from "@/components/icons";
+
+import { siteConfig } from "@/config/site";
+
 import {
 	Navbar as NextUINavbar,
 	NavbarContent,
@@ -10,22 +19,7 @@ import {
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-
 import { link as linkStyles } from "@nextui-org/theme";
-
-import { siteConfig } from "@/app/_config/site";
-import NextLink from "next/link";
-import clsx from "clsx";
-
-import { ThemeSwitch } from "./theme-switch";
-import {
-	GithubIcon,
-	HeartFilledIcon,
-	SearchIcon,
-} from "@/app/_components/icons";
-
-import { Logo } from "@/app/_components/icons";
-import UserButtons from './user-buttons';
 
 export const Navbar = () => {
 	const searchInput = (

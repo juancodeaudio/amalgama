@@ -1,4 +1,4 @@
-import CoursesSection from '@/app/_components/courses/courses-section';
+import CoursesSection from '@/components/courses/courses-section';
 
 export default async function Courses() {
 	return (

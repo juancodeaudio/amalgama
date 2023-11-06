@@ -1,4 +1,4 @@
-import { title } from "@/app/_components/primitives"
+import { title } from "@/components/primitives"
 
 const References = () => {
   return (

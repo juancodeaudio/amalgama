@@ -1,9 +1,11 @@
-import { Card, CardHeader, CardBody } from "@nextui-org/card"
-import { Button } from "@nextui-org/button"
 import clsx from "clsx"
-import { title } from "../primitives"
-import { CoursesWithClasses } from "@/app/_types/supabase";
 import NextLink from "next/link"
+
+import { title } from "@/components/primitives"
+import { CoursesWithClasses } from "@/types/supabase";
+
+import { Button } from "@nextui-org/button"
+import { Card, CardHeader, CardBody } from "@nextui-org/card"
 
 type CourseNavProps = {
   courseData: CoursesWithClasses,

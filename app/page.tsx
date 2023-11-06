@@ -1,13 +1,13 @@
 'use client'
 
-import Link from "next/link";
-import { Button } from "@nextui-org/button";
-import { siteConfig } from "@/app/_config/site";
-import { title, subtitle } from "@/app/_components/primitives";
-import { motion as m } from "framer-motion";
 import clsx from "clsx";
-// import Shapes from "./_components/home/shapes";
-import FloatingShapes from "./_components/home/floating-shapes";
+import Link from "next/link";
+import { motion as m } from "framer-motion";
+
+import { title } from "@/components/primitives";
+import FloatingShapes from "@/components/home/floating-shapes";
+
+import { Button } from "@nextui-org/button";
 
 export default function Home() {
 	return (
