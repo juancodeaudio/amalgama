@@ -9,25 +9,21 @@ import { Image } from "@nextui-org/image"
 import { Button } from "@nextui-org/button";
 import { title } from "@/app/_components/primitives";
 import { HiHeart, HiArrowRight } from "react-icons/hi2";
+import { CoursesWithClasses } from "@/app/_types/supabase";
 
 type CourseCardProps = {
   likedCourses: string[] | undefined,
-  courseID: string,
-  courseTitle: string,
-  description: string,
-  courseImage: string,
-  href: string,
-  totalClasses: number
+  courseData:CoursesWithClasses,
 }
 
-const CourseCard = ({ likedCourses, courseID, courseTitle, description, courseImage, href, totalClasses }: CourseCardProps) => {
+const CourseCard = ({ likedCourses, courseData }: CourseCardProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const { getToken, userId } = useAuth();
   useEffect(() => {
     if(likedCourses) {
-      setIsLiked(likedCourses.includes(courseID))
+      setIsLiked(likedCourses.includes(courseData.id))
     }
-  }, [likedCourses, courseID])
+  }, [likedCourses, courseData.id])
 
   const handleLike = async () => {
     const supabaseAccessToken = await getToken({
@@ -41,13 +37,13 @@ const CourseCard = ({ likedCourses, courseID, courseTitle, description, courseIm
       }
     );
     if(isLiked) {
-      const { error } = await supabase.from('likes').delete().eq('course_id', courseID);
+      const { error } = await supabase.from('likes').delete().eq('course_id', courseData.id);
       if(error) {
         console.log(error)
       }
       setIsLiked(false)
     } else {
-      const { error } = await supabase.from('likes').insert({ user_id: userId, course_id: courseID });
+      const { error } = await supabase.from('likes').insert({ user_id: userId, course_id: courseData.id });
       if(error) {
         console.log(error)
       }
@@ -68,17 +64,17 @@ const CourseCard = ({ likedCourses, courseID, courseTitle, description, courseIm
               className="object-cover"
               height={200}
               shadow="md"
-              src={courseImage}
+              src={courseData.image}
               width="100%"
             />
           </div>
           <div className="flex flex-col col-span-6 sm:col-span-8 lg:col-span-6">
-            <h2 className={title({ size: 'sm'})}>{courseTitle}</h2>
-            <p className="opacity-70">{description}</p>
+            <h2 className={title({ size: 'sm'})}>{courseData.title}</h2>
+            <p className="opacity-70">{courseData.description}</p>
             <div className="flex mt-5">
               <div>
-                <p className="text-tiny opacity-70">{`${totalClasses} Lecciones`}</p>
-                <p className="text-tiny opacity-70">4 horas</p>
+                <p className="text-tiny opacity-70">{`${courseData.classes.length} Lecciones`}</p>
+                <p className="text-tiny opacity-70">{`${courseData.duration} horas`}</p>
               </div>
               <Button
                 onPress={handleLike}
@@ -90,7 +86,7 @@ const CourseCard = ({ likedCourses, courseID, courseTitle, description, courseIm
                 startContent={<HiHeart className="h-5 w-5" />}
                 isIconOnly
               />
-              <Link href={href}>
+              <Link href={`/courses/${courseData.slug}?class=${courseData.classes[0].slug}`}>
                 <Button
                   className="text-tiny ml-4 w-16"
                   color="primary"

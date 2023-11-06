@@ -31,13 +31,8 @@ const CoursesSection = async () => {
           courses.map((course) => (
             <CourseCard
               likedCourses={likedCourses}
-              courseID={course.id}
+              courseData={course}
               key={course.slug}
-              courseTitle={course.title}
-              description={course.description}
-              courseImage={course.image}
-              href={`/courses/${course.slug}?class=${course.classes[0].slug}`}
-              totalClasses={course.classes.length}
             />
           ))
         }

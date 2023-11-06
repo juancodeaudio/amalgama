@@ -7,13 +7,13 @@ import { title } from "../primitives"
 import CommentsForm from "./comments-form"
 import CommentBox from "./comment-box"
 import { Card, CardBody } from "@nextui-org/card"
-import { Tables, DbResult } from "@/app/_types/supabase";
+import { DbResult, CommentWithReplies } from "@/app/_types/supabase";
 import { createBrowserClient } from '@supabase/ssr';
 import { getUsers } from '@/app/actions'
 import type { User } from "@clerk/nextjs/dist/types/server";
 import { buildCommentsTree } from "@/app/_utils/buildCommentsTree";
 import { useAuth } from '@clerk/nextjs'
-import { CommentWithReplies } from "@/app/_types/supabase"
+import { Toaster } from "sonner";
 
 
 const CommentsSection = () => {
@@ -28,17 +28,6 @@ const CommentsSection = () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
-  const getUserName = (users: User[], userId: string) => {
-    const user = users.find(user => user.id === userId)
-    if(user?.firstName === undefined || user?.lastName === undefined) {
-      return 'Usuario'
-    }
-    return `${user?.firstName} ${user?.lastName}`
-  }
-  const getUserImage = (users: User[], userId: string) => {
-    const user = users.find(user => user.id === userId)
-    return `${user?.imageUrl}`
-  }
   useEffect(() => {
     const getCommentsData = async () => {
       const query = supabase.from('classes').select(`
@@ -46,15 +35,11 @@ const CommentsSection = () => {
         comments (*)
       `).eq('slug', selectedClass)
       const { data: classInfo }: DbResult<typeof query> = await query
-      console.log(classInfo)
       const users = await getUsers()
       if(classInfo) {
         const commentsTree = buildCommentsTree(classInfo[0].comments)
         setCommentsData(commentsTree)
         setClassID(classInfo[0].id)
-        if(classInfo[0].comments.length > 0) {
-          getUserName(users, classInfo[0].comments[0].user_id)
-        }
       }
       setUsersData(users)
     }
@@ -62,6 +47,7 @@ const CommentsSection = () => {
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedClass])
+  console.log(commentsData)
 
   return (
     <Card className="w-full bg-background">
@@ -81,12 +67,12 @@ const CommentsSection = () => {
             }).map((comment, index) => (
               <CommentBox
                 key={index}
+                users={usersData}
                 comment={comment}
+                commentsData={commentsData}
                 setCommentsData={setCommentsData}
-                commentReplies={comment.replies}
-                authorName={getUserName(usersData, comment.user_id)}
-                authorImage={getUserImage(usersData, comment.user_id)}
                 isDeletable={comment.user_id === userId}
+                replyOf={replyOf}
                 setReplyOf={setReplyOf}
                 isReply={false}
               />
@@ -96,6 +82,14 @@ const CommentsSection = () => {
             </div>
           }
         </div>
+        <Toaster
+          position="bottom-right"
+          // theme="dark"
+          toastOptions={{
+            style: { background: '#f5f5f5', border: 'none' },
+          }}
+          richColors
+        />
       </CardBody>
     </Card>
   )
