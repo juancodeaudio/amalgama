@@ -13,7 +13,7 @@ import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/input";
 
 import { HiPaperAirplane } from "react-icons/hi2";
-import { CoursesWithClasses, CoursesWithFeedbacks, DbResult } from "@/types/supabase";
+import { CoursesWithFeedbacks } from "@/types/supabase";
 
 type CourseFeedbackProps = {
   courseData: CoursesWithFeedbacks
