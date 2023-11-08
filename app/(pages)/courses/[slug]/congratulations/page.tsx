@@ -9,7 +9,7 @@ import { title } from "@/components/primitives";
 import Confetti from '@/components/courses/confetti';
 import CourseFeedback from "@/components/courses/course-feedback";
 
-import { CoursesWithClasses, DbResult } from "@/types/supabase";
+import { CoursesWithFeedbacks, DbResult } from "@/types/supabase";
 
 import { Toaster } from "sonner";
 import { Card, CardBody, CardHeader, CardFooter } from '@nextui-org/card'
@@ -19,7 +19,7 @@ import { Image } from '@nextui-org/image';
 import { HiHome, HiQueueList } from "react-icons/hi2";
 
 const Congratulations = ({ params }: { params: { slug: string } }) => {
-  const [courseInfo, setCourseInfo] = useState<CoursesWithClasses | null>(null)
+  const [courseInfo, setCourseInfo] = useState<CoursesWithFeedbacks | null>(null)
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!

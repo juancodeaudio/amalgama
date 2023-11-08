@@ -1,5 +1,3 @@
-import { PostgrestError } from '@supabase/supabase-js'
-
 export type Json =
   | string
   | number
@@ -132,7 +130,7 @@ export interface Database {
       }
       feedbacks: {
         Row: {
-          content: string
+          content: string | null
           course_id: string
           created_at: string
           id: string
@@ -140,7 +138,7 @@ export interface Database {
           user_id: string
         }
         Insert: {
-          content?: string
+          content?: string | null
           course_id: string
           created_at?: string
           id?: string
@@ -148,7 +146,7 @@ export interface Database {
           user_id: string
         }
         Update: {
-          content?: string
+          content?: string | null
           course_id?: string
           created_at?: string
           id?: string
@@ -212,23 +210,3 @@ export interface Database {
     }
   }
 }
-
-export type Tables<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Row']
-export type Enums<T extends keyof Database['public']['Enums']> = Database['public']['Enums'][T]
-export type CoursesWithClasses = Tables<'courses'> & {
-	classes: Tables<'classes'>[];
-}
-export type CoursesWithFeedbacks = Tables<'courses'> & {
-	feedbacks: Tables<'feedbacks'>[];
-}
-export type ClassesWithComments = Tables<'classes'> & {
-	classes: Tables<'comments'>[];
-}
-export type CommentWithReplies = Tables<'comments'> & {
-	replies?: Tables<'comments'>[];
-}
-
-export type DbResult<T> = T extends PromiseLike<infer U> ? U : never
-export type DbResultOk<T> = T extends PromiseLike<{ data: infer U }> ? Exclude<U, null> : never
-export type DbResultErr = PostgrestError
-

@@ -1,3 +1,4 @@
+'use client'
 
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import clsx from "clsx";
@@ -12,10 +13,10 @@ import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/input";
 
 import { HiPaperAirplane } from "react-icons/hi2";
-import { CoursesWithClasses, DbResult } from "@/types/supabase";
+import { CoursesWithClasses, CoursesWithFeedbacks, DbResult } from "@/types/supabase";
 
 type CourseFeedbackProps = {
-  courseData: CoursesWithClasses
+  courseData: CoursesWithFeedbacks
 };
 
 const CourseFeedback = ({courseData}: CourseFeedbackProps) => {
@@ -61,6 +62,14 @@ const CourseFeedback = ({courseData}: CourseFeedbackProps) => {
       error: '¡Ups! Parece que hubo un error al enviar tu feedback',
     });
   }
+  useEffect(() => {
+    const feedbackInfo = courseData.feedbacks.find((feedback) => feedback.user_id === userId)
+    if(feedbackInfo) {
+      setRating(feedbackInfo.rating)
+      setNewFeedback(feedbackInfo.content)
+      setIsSubmitted(true)
+    }
+  })
 
   return (
     <form
@@ -72,14 +81,14 @@ const CourseFeedback = ({courseData}: CourseFeedbackProps) => {
         isDisabled={isSubmitted}
         value={newFeedback}
         onChange={onChange}
-        label="!Cuentanos tu experiencia!"
+        label="¡Cuentanos tu experiencia!"
         variant="faded"
         className="w-full max-w-[400px]"
       />
       <div className="flex items-center gap-8">
         <StarRating isSubmitted={isSubmitted} rating={rating} setRating={setRating} />
         <Button
-          isDisabled={rating === 0 || isSubmitted}
+          isDisabled={rating === 0 || newFeedback === '' || isSubmitted}
           type="submit"
           color="primary"
           className=""
