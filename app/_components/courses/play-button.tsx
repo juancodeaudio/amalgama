@@ -22,7 +22,7 @@ export const PlayButton = ({file, fileName}: PlayButtonProps) => {
     setIsPlaying(true)
     console.log('Duration: ',duration)
     if(duration) {
-      // a setInterval to update the progress bar according to the duration of the audio
+      setProgress(0)
       const interval = setInterval(() => {
         setProgress((progress) => progress + 1)
       }, duration/100);
