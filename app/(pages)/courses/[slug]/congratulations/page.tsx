@@ -8,16 +8,15 @@ import Link from "next/link";
 import { title } from "@/components/primitives";
 import Confetti from '@/components/courses/confetti';
 import CourseFeedback from "@/components/courses/course-feedback";
-import StarRating from "@/app/_components/courses/star-rating";
 
 import { CoursesWithClasses, DbResult } from "@/types/supabase";
 
+import { Toaster } from "sonner";
 import { Card, CardBody, CardHeader, CardFooter } from '@nextui-org/card'
-import { Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Image } from '@nextui-org/image';
 
-import { HiStar, HiOutlineStar, HiPaperAirplane, HiHome, HiQueueList } from "react-icons/hi2";
+import { HiHome, HiQueueList } from "react-icons/hi2";
 
 const Congratulations = ({ params }: { params: { slug: string } }) => {
   const [courseInfo, setCourseInfo] = useState<CoursesWithClasses | null>(null)
@@ -28,7 +27,7 @@ const Congratulations = ({ params }: { params: { slug: string } }) => {
   const getCourseData = async () => {
     const query = supabase.from('courses').select(`
       *,
-      classes (*)
+      feedbacks (*)
     `).eq('slug', params.slug)
     const { data: courses }: DbResult<typeof query> = await query
     courses && setCourseInfo(courses[0])
@@ -80,8 +79,21 @@ const Congratulations = ({ params }: { params: { slug: string } }) => {
             </Button>
           </div>
         </CardBody>
-        <CourseFeedback />
+        <CardFooter>
+          {
+            courseInfo &&
+            <CourseFeedback courseData={courseInfo} />
+          }
+        </CardFooter>
       </Card>
+      <Toaster
+          position="bottom-right"
+          // theme="dark"
+          toastOptions={{
+            style: { background: '#f5f5f5', border: 'none' },
+          }}
+          richColors
+        />
       <Confetti />
     </main>
   )

@@ -2,8 +2,13 @@ import { useState } from 'react'
 import { HiStar, HiOutlineStar } from 'react-icons/hi2'
 import { Button } from '@nextui-org/button'
 
-const StarRating = () => {
-  const [rating, setRating] = useState(0);
+type StarRatingProps = {
+  rating: number;
+  setRating: (rating: number) => void;
+  isSubmitted: boolean;
+}
+
+const StarRating = ({rating, setRating, isSubmitted}: StarRatingProps) => {
   const [hover, setHover] = useState(0);
   return (
     <div className="flex justify-center">
@@ -12,6 +17,7 @@ const StarRating = () => {
           index += 1
           return (
             <Button
+              isDisabled={isSubmitted}
               key={index}
               variant='light'
               size='sm'
