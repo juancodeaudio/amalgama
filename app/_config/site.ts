@@ -22,9 +22,13 @@ export const siteConfig = {
     },
 	],
 	navMenuItems: [
-		{
+    {
 			label: "Inicio",
 			href: "/",
+		},
+		{
+			label: "Cuenta",
+			href: "/user-profile",
 		},
     {
       label: "Cursos",

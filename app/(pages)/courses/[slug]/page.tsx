@@ -63,18 +63,25 @@ const CoursePage = ({ params }: { params: { slug: string }}) => {
   }
 
 	return (
-		<main className='flex relative px-10 gap-10 bg-secondary -mt-16 pb-20'>
+		<main className='flex relative lg:px-10 gap-10 bg-secondary -mt-16 pb-1 lg:pb-20'>
       <m.aside className={`w-5/6 lg:w-1/4 md:w-2/3 z-[900] h-screen lg:h-[75vh] lg:sticky top-0 lg:top-[15%] left-0 ${tableIsActive? 'fixed lg:flex': 'hidden lg:flex'}`}>
         <div className="absolute lg:hidden h-screen w-screen bg-background/50 backdrop-blur left-0 -z-[900]"></div>
         {
           (!!courseInfo && !!selectedClass) &&
-          <CourseNav courseData={courseInfo} selectedClass={selectedClass} />
+          <CourseNav courseData={courseInfo} selectedClass={selectedClass} setTableIsActive={setTableIsActive} />
         }  
       </m.aside>
-      <section className="w-full lg:w-3/4 flex flex-col gap-10 mt-20">
+      <section className="w-full lg:w-3/4 flex flex-col gap-1 lg:gap-10 mt-20">
         {
           (!!courseInfo && !!selectedClassData) &&
-          <ClassContent courseSlug={courseInfo.slug} classData={selectedClassData} getPrevClass={prevClass} getNextClass={nextClass} setTableIsActive={setTableIsActive}/>
+          <ClassContent
+            courseSlug={courseInfo.slug}
+            classData={selectedClassData}
+            getPrevClass={prevClass}
+            getNextClass={nextClass}
+            setTableIsActive={setTableIsActive}
+            totalClasses={courseInfo.classes.length}
+          />
         }
         {
           !!selectedClassData &&

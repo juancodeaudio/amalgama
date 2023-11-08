@@ -52,10 +52,9 @@ const CommentsSection = () => {
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedClass])
-  console.log(commentsData)
 
   return (
-    <Card className="w-full bg-background">
+    <Card className="w-full bg-background rounded-none lg:rounded-xl">
       <CardBody className="py-8 lg:py-16">    
         <div className="w-full max-w-2xl mx-auto px-4">
           <div className="flex justify-between items-center mb-6">

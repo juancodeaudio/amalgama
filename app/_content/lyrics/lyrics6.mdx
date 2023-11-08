@@ -1,0 +1,48 @@
+import PlayButton from '@/app/_components/courses/play-button';
+import { Image } from "@nextui-org/image"
+
+<div className="flex justify-between">
+  <div className='w-2/5 flex justify-center items-center'>
+    <Image
+      width={200}
+      src="/cuterobots_2.png"
+      alt="Imagen de curso"
+    />
+  </div>
+  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
+    <span className="text-secondary text-center font-bold">¿Eso es todo?</span>
+    <span className="italic text-center">Para concluir este curso de manera especial, te invitamos a participar en una actividad final emocionante.</span>
+  </div>
+</div> 
+
+A continuación, te proporcionaremos un audio con una melodía, y te desafiamos a crear tu propia letra, aplicando todo lo que has aprendido en este curso. Mientras trabajas en esta letra, sumergete en la melodía, explorando las emociones y recuerdos que puede evocar. Además, te entregaremos otro audio que contendrá todos los componentes que complementan una canción, como armonía, ritmo y voces adicionales, sin la melodía principal. Esta actividad es una oportunidad para aplicar tus conocimientos y experimentar la alegría de la creación musical.
+
+Esperamos que disfrutes de este desafío y que sigas cultivando tus habilidades de escritura de canciones en futuros proyectos musicales. Gracias por ser parte de este curso y por compartir tu pasión por la música con nosotros.
+
+<div className="flex justify-evenly gap-2 ">
+  <div className="flex flex-col justify-center gap-3">
+    <h4 className="my-0 text-center text-secondary">MELODÍA PRINCIPAL</h4>
+    <PlayButton file="/loop1-rock.mp3" fileName="Loop 1 - Rock"/>
+  </div>
+  <div className="flex flex-col justify-center gap-3">
+    <h4 className="my-0 text-center text-secondary">PISTA INSTRUMENTAL</h4>
+    <PlayButton file="/loop2-funk.mp3" fileName="Loop 2 - Funk"/>
+  </div>
+</div>
+<br/>
+
+<div className="flex justify-between">
+  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
+    <span className="text-secondary text-center font-bold">¿Un consejo más?</span>
+    <span className="italic text-center">Recuerda que la escritura de letras es un proceso en constante evolución, y cada canción es una oportunidad para compartir tus pensamientos, emociones y experiencias con el mundo. Puedes compartir este último proyecto en la sección de comentarios, copiando el link, para que otras personas puedan escuchar tu creación.</span>
+    <span className="text-secondary text-center font-bold">¡Hasta la próxima!</span>
+  </div>
+  <div className='w-2/5 flex justify-center items-center'>
+    <Image
+      width={200}
+      src="/cuterobots_2.png"
+      alt="Imagen de curso"
+    />
+  </div>
+</div>
+

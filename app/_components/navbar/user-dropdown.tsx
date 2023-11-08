@@ -8,7 +8,7 @@ import {DropdownItem, DropdownTrigger, Dropdown, DropdownMenu} from "@nextui-org
 import {Avatar} from "@nextui-org/avatar";
 
 const UserDropdown = () => {
-  const { isSignedIn, user, isLoaded } = useUser();
+  const { user } = useUser();
   return (
     <Dropdown placement="bottom-end">
           <DropdownTrigger>

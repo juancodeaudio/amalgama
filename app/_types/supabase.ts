@@ -13,7 +13,7 @@ export interface Database {
     Tables: {
       classes: {
         Row: {
-          class_number: number | null
+          class_number: number
           content: string
           course_id: string
           created_at: string
@@ -24,7 +24,7 @@ export interface Database {
           title: string
         }
         Insert: {
-          class_number?: number | null
+          class_number: number
           content?: string
           course_id: string
           created_at?: string
@@ -35,7 +35,7 @@ export interface Database {
           title?: string
         }
         Update: {
-          class_number?: number | null
+          class_number: number
           content?: string
           course_id?: string
           created_at?: string

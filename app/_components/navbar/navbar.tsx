@@ -1,12 +1,16 @@
 import NextLink from "next/link";
 import clsx from "clsx";
+import { currentUser } from '@clerk/nextjs';
+
+import { siteConfig } from "@/config/site";
+
+import MobileMenu from "@/components/navbar/mobile-menu";
 
 import { ThemeSwitch } from "@/components/navbar/theme-switch";
 import UserButtons from '@/components/navbar/user-buttons';
 import { Logo, SearchIcon } from "@/components/icons";
-
-import { siteConfig } from "@/config/site";
-
+import { Avatar } from "@nextui-org/avatar";
+import {User} from "@nextui-org/user";
 import {
 	Navbar as NextUINavbar,
 	NavbarContent,
@@ -21,7 +25,8 @@ import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 
-export const Navbar = () => {
+export const Navbar = async () => {
+  const user = await currentUser();
 	const searchInput = (
 		<Input
 			aria-label="Search"
@@ -85,23 +90,7 @@ export const Navbar = () => {
 				<ThemeSwitch />
 				<NavbarMenuToggle className="" />
 			</NavbarContent>
-
-			<NavbarMenu>
-				{searchInput}
-				<div className="mx-4 mt-2 flex flex-col gap-2">
-					{siteConfig.navMenuItems.map((item, index) => (
-						<NavbarMenuItem key={`${item}-${index}`}>
-							<Link
-								color="foreground"
-								href={item.href}
-								size="lg"
-							>
-								{item.label}
-							</Link>
-						</NavbarMenuItem>
-					))}
-				</div>
-			</NavbarMenu>
+			<MobileMenu searchInput={searchInput} />
 		</NextUINavbar>
 	);
 };

@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import dynamic from 'next/dynamic';
+import Link from "next/link";
 
 import { title } from "@/components/primitives";
 
@@ -12,6 +13,7 @@ import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { HiOutlineChevronDoubleLeft, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 
 type ClassContentType = {
+  totalClasses: number
   courseSlug: string,
   classData: Tables<'classes'>,
   getPrevClass: () => void,
@@ -19,8 +21,9 @@ type ClassContentType = {
   setTableIsActive: (value: boolean) => void
 }
 
-const ClassContent = ({ courseSlug, classData, getPrevClass, getNextClass, setTableIsActive }: ClassContentType) => {
+const ClassContent = ({ totalClasses, courseSlug, classData, getPrevClass, getNextClass, setTableIsActive }: ClassContentType) => {
 
+  const isLastClass = classData.class_number === totalClasses;
   const Content = dynamic(() => import(`@/app/_content/${courseSlug}/${classData.content}`));
   const handlePrevClass = () => {
     getPrevClass()
@@ -30,21 +33,32 @@ const ClassContent = ({ courseSlug, classData, getPrevClass, getNextClass, setTa
   }
 
   return (
-    <Card className="relative w-full h-[90vh] bg-background">
-      <CardHeader className="w-full flex justify-center pt-20 pb-0">
+    <Card className="relative w-full h-[90vh] bg-background rounded-none lg:rounded-xl">
+      <CardHeader className="w-full flex justify-center pt-10 pb-0">
         <Button onPress={() => setTableIsActive(true)} variant="flat" isIconOnly className="absolute top-4 left-4 lg:hidden"><HiOutlineChevronDoubleLeft /></Button>
         <h2 className={clsx(title({ size:'md'}), 'text-secondary')}>{classData.title}</h2>
       </CardHeader>
-      <CardBody className="w-full h-[80vh] flex flex-col items-center pt-10 gap-6">
+      <CardBody className="w-full h-[80vh] flex flex-col items-center pb-0 pt-6 gap-6">
         <h3 className={clsx(title({ size:'sm'}), 'text-foreground/50')}>{classData.description}</h3>
         <ScrollShadow hideScrollBar className="prose text-foreground">
           <Content />
         </ScrollShadow>
       </CardBody>
-      <CardFooter className="h-28 px-14">
-        <div className="flex gap-4 ml-auto">
+      <CardFooter className="h-20 px-14">
+        <div className="flex gap-4 mx-auto lg:mx-0 lg:ml-auto">
           <Button className={classData.class_number === 1 ? 'hidden' : ''} onPress={handlePrevClass} startContent={<HiChevronLeft />} isIconOnly variant="bordered" />
-          <Button onPress={handleNextClass} endContent={<HiChevronRight />}>Siguiente</Button>
+          {
+            !isLastClass
+            ? <Button onPress={handleNextClass} endContent={<HiChevronRight />}>Siguiente</Button>
+            : <Link href={`/courses/${courseSlug}/congratulations`}>
+                <Button
+                  color="secondary"
+                  className="text-background"
+                >
+                  Finalizar
+                </Button>
+              </Link>
+          }
         </div>
       </CardFooter>
     </Card>

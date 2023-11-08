@@ -1,28 +1,31 @@
 import PlayButton from '@/app/_components/courses/play-button';
+import { Image } from "@nextui-org/image"
 
-<>
-Ya que hemos hablado de la forma y estructura de la letra de una canción a gran escala, ahora vamos a ir un poco más al detalle. En esta sesión y la siguiente conoceremos los 5 elementos internos de composición que nos ayudarán a dotar a nuestras letras con todos los aspectos que ya hemos aprendido.
+Ya que hemos hablado de la forma y estructura de la letra de una canción a gran escala, ahora vamos a ir un poco más al detalle. En esta sesión y la siguiente conoceremos alguno elementos internos de la composición que nos ayudarán a dotar a nuestras letras con todos los aspectos que ya hemos aprendido.
 
 Por ahora vamos a concentrarnos en dos de ellos:
-
+<div className="text-secondary">
 *	El número de líneas
 *	El largo de las líneas
-
+</div>
 Comencemos con el primero: el número de líneas.
-La cantidad de líneas que pones en cada sección de la canción te ayuda a crear la sensación de estabilidad o inestabilidad de la que hablamos al final de la sesión anterior. Esto sucede de la siguiente forma:
 
+¿Recuerdas que en la sesión pasada hablamos de estabilidad e inestabilidad? Pues hay más de una forma de crear estas sensaciones en tu canción.
+
+La cantidad de líneas que pones en cada sección de la canción te ayuda a crear la sensación de estabilidad o inestabilidad. Esto sucede de la siguiente forma:
+<div className="text-secondary">
 *	Número par de líneas: estable
 *	Número impar de líneas: inestable
-
+</div>
 Para que puedas percibir este efecto puedes realizar un ejercicio muy sencillo:
 
-<div className="block px-10 bg-primary/20 py-4 pb-8 w-2/3 mx-auto rounded-lg text-primary">
+<div className="block px-10 bg-secondary/20 py-4 pb-8 w-2/3 mx-auto rounded-lg text-secondary">
 1.	Escoge una frase.<br/>Ej: “Sueño contigo cada noche”.
 2.	Escoge un loop musical que te guste de los que encontrarás a continuación.<br/>(Un loop musical es un fragmento de música que se repite constantemente y suele funcionar como base para otras partes de una canción)
 3.	Crea un ritmo para esa frase que se ajuste al loop que escogiste.<br/>(El ritmo que sientas que suena bien)
 4.	Repite la frase dos veces con el mismo ritmo.
 5.	Ahora repite la frase tres veces con el mismo ritmo.
-<div className="flex justify-evenly gap-2 ">
+<div className="flex justify-evenly gap-2 bg-background rounded-xl p-3">
   <div className="flex flex-col justify-center gap-3">
     <h4 className="my-0 text-center text-foreground">LOOP 1</h4>
     <PlayButton file="/loop1-rock.mp3" fileName="Loop 1 - Rock"/>
@@ -38,15 +41,41 @@ Para que puedas percibir este efecto puedes realizar un ejercicio muy sencillo:
 </div>
 </div>
 
-¿Lo sentiste? Cuando la repetiste tres veces posiblemente sentiste que te hacía falta algo para continuar. ¡Eso es! Esa es la diferencia entre estabilidad e inestabilidad de una sección de tu canción.
+<div className="flex justify-between">
+  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
+    <span className="text-secondary text-center font-bold">¿Lo sentiste?</span>
+    <span className="italic text-center">Cuando la repetiste tres veces posiblemente sentiste que te hacía falta algo para continuar. ¡Eso es! Esa es la diferencia entre estabilidad e inestabilidad de una sección de tu canción.</span>
+  </div>
+  <div className='w-2/5 flex justify-center items-center'>
+    <Image
+      width={200}
+      src="/cuterobots_2.png"
+      alt="Imagen de curso"
+    />
+  </div>
+</div> 
 
-Ahora puedes usar esto cómo quieras. Por ejemplo, puedes cambiar la estabilidad del coro de tu canción si en la primera aparición tienes una frase importante que se repite 3 veces y en el último coro repites esa frase 4 veces. Verás que te dará esa sensación de resolución y estabilidad hacia el final de la canción. Como si fuera el final de la historia que estás contando...
+¡Ahora puedes usar esto cómo quieras!
 
-¡Un consejo! Lo que acabas de aprender puede tener más de un significado.<br/>La relación entre estabilidad e inestabilidad puede traducirse a conceptos como quietud (estabilidad) y movimiento (inestabilidad) o a percepciones como “Se ha terminado” (estabilidad) y “expectativa a lo que sigue” (inestabilidad).<br/>Recuerda que esto es una herramienta que puedes usar a voluntad para direccionar la historia hacia donde quieres que vaya. 
+Por ejemplo, puedes cambiar la estabilidad del coro de tu canción si en la primera aparición tienes una frase importante que se repite 3 veces y en el último coro repites esa frase 4 veces. Verás que te dará esa sensación de resolución y estabilidad hacia el final de la canción. Como si fuera el final de la historia que estás contando...
+
+
+<div className="flex justify-between">
+  <div className='w-2/5 flex justify-center items-center'>
+    <Image
+      width={200}
+      src="/cuterobots_2.png"
+      alt="Imagen de curso"
+    />
+  </div>
+  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
+    <span className="text-secondary text-center font-bold">¡Un consejo! </span>
+    <span className="italic text-center">Lo que acabas de aprender puede tener más de un significado.<br/>La relación entre estabilidad e inestabilidad puede traducirse a conceptos como quietud <span className="text-secondary">(estabilidad)</span> y movimiento <span className="text-secondary">(inestabilidad)</span> o a percepciones como “Se ha terminado” <span className="text-secondary">(estabilidad)</span> y “expectativa a lo que sigue” <span className="text-secondary">(inestabilidad)</span>.<br/><br/>Recuerda que esto es una herramienta que puedes usar a voluntad para direccionar la historia hacia donde quieres que vaya.</span>
+  </div>
+</div> 
 
 <p className="text-center block bg-primary/20 py-10 mx-auto rounded-lg text-foreground/70">
 <span className="text-primary font-bold">En cualquier caso, NO HAY RECETAS:</span><br/>
 
 Lo importante es la sensación que vas viviendo a partir de cada combinación de elementos y que vayas eligiendo los que más resuenan con lo que quieres expresar.
 </p>
-</>
