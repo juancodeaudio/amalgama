@@ -38,11 +38,31 @@ const ClassContent = ({ totalClasses, courseSlug, classData, getPrevClass, getNe
         <Button onPress={() => setTableIsActive(true)} variant="flat" isIconOnly className="absolute top-4 left-4 lg:hidden"><HiOutlineChevronDoubleLeft /></Button>
         <h2 className={clsx(title({ size:'md'}), 'text-secondary')}>{classData.title}</h2>
       </CardHeader>
-      <CardBody className="w-full h-[80vh] flex flex-col items-center pb-0 pt-6 gap-6">
-        <h3 className={clsx(title({ size:'sm'}), 'text-foreground/50')}>{classData.description}</h3>
-        <ScrollShadow hideScrollBar className="prose text-foreground">
-          <Content />
-        </ScrollShadow>
+      <CardBody className="w-full h-[80vh] flex flex-col items-center pb-0 pt-6 gap-6"> 
+        {
+          (!classData.is_quiz && !classData.is_video) && (
+            <h3 className={clsx(title({ size:'sm'}), 'text-foreground/50')}>{classData.description}</h3>
+          )
+        }
+        {
+          !classData.is_video
+          ? (    
+            <ScrollShadow hideScrollBar className="prose text-foreground">
+              <Content />
+            </ScrollShadow>
+          )
+          : (
+            // <iframe
+            //   className="w-full h-[50vh] lg:h-[70vh]"
+            //   src={classData.content}
+            //   title={classData.title}
+            //   frameBorder="0"
+            //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            //   allowFullScreen={true}
+            // />
+            <p>Trabajando en el video... ¡Esperalo!</p>
+          )
+        }
       </CardBody>
       <CardFooter className="h-20 px-14">
         <div className="flex gap-4 mx-auto lg:mx-0 lg:ml-auto">
@@ -50,14 +70,7 @@ const ClassContent = ({ totalClasses, courseSlug, classData, getPrevClass, getNe
           {
             !isLastClass
             ? <Button onPress={handleNextClass} endContent={<HiChevronRight />}>Siguiente</Button>
-            : <Link href={`/courses/${courseSlug}/congratulations`}>
-                <Button
-                  color="secondary"
-                  className="text-background"
-                >
-                  Finalizar
-                </Button>
-              </Link>
+            : <Button as={Link} href={`/courses/${courseSlug}/congratulations`} color="secondary" className="text-background">Finalizar</Button>
           }
         </div>
       </CardFooter>

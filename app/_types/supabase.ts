@@ -20,6 +20,8 @@ export interface Database {
           description: string
           duration: number | null
           id: string
+          is_quiz: boolean
+          is_video: boolean
           slug: string
           title: string
         }
@@ -31,6 +33,8 @@ export interface Database {
           description?: string
           duration?: number | null
           id?: string
+          is_quiz?: boolean
+          is_video?: boolean
           slug?: string
           title?: string
         }
@@ -42,6 +46,8 @@ export interface Database {
           description?: string
           duration?: number | null
           id?: string
+          is_quiz?: boolean
+          is_video?: boolean
           slug?: string
           title?: string
         }
@@ -140,7 +146,7 @@ export interface Database {
           user_id: string
         }
         Insert: {
-          content?: string
+          content: string
           course_id: string
           created_at?: string
           id?: string

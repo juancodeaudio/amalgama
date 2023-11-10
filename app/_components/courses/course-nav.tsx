@@ -19,11 +19,11 @@ type CourseNavProps = {
 const CourseNav = ({courseData, selectedClass, setTableIsActive}: CourseNavProps) => {
   return (
     <Card className="w-full h-full py-6 bg-background relative">
-        <Button onPress={() => setTableIsActive(false)} variant="flat" isIconOnly className="absolute top-4 right-4 lg:hidden z-40"><HiOutlineChevronDoubleLeft /></Button>
-        <CardHeader className="relative">
-          <h2 className={clsx(title({ size: 'sm' }), 'ml-2 text-secondary')}>{courseData.title}</h2>
-        </CardHeader>
-        <CardBody className="pt-0">
+      <Button onPress={() => setTableIsActive(false)} variant="flat" isIconOnly className="absolute top-4 right-4 lg:hidden z-40"><HiOutlineChevronDoubleLeft /></Button>
+      <CardHeader className="relative">
+        <h2 className={clsx(title({ size: 'sm' }), 'ml-2 text-secondary')}>{courseData.title}</h2>
+      </CardHeader>
+      <CardBody className="pt-0">
         <ScrollShadow hideScrollBar>
           <ul className="flex flex-col gap-4">
             {
@@ -31,7 +31,7 @@ const CourseNav = ({courseData, selectedClass, setTableIsActive}: CourseNavProps
               .sort((a, b) => a.class_number - b.class_number)
               .map((courseClass) => (
                 <Button
-                  variant="flat"
+                  variant={courseClass.is_quiz ? "bordered" : "flat"}
                   as={NextLink}
                   href={`?${new URLSearchParams({
                     class: courseClass.slug
@@ -41,10 +41,14 @@ const CourseNav = ({courseData, selectedClass, setTableIsActive}: CourseNavProps
                   key={courseClass.slug}
                 >
                   <h4 className="uppercase font-bold text-base">{courseClass.title}</h4>
-                  <div className="flex justify-between w-full opacity-50 text-sm gap-2">
-                    <p className="whitespace-normal text-left">{courseClass.description}</p>
-                    <p>{`${courseClass.duration} min`}</p>
-                  </div>
+                  {
+                    courseClass.is_quiz === false && (    
+                      <div className="flex justify-between w-full opacity-50 text-sm gap-2">
+                        <p className="whitespace-normal text-left">{courseClass.description}</p>
+                        <p>{`${courseClass.duration} min`}</p>
+                      </div>
+                    )
+                  }
                 </Button>
               ))
             }
