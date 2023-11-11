@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import Link from "next/link";
 
 import { title } from "@/components/primitives";
+import VideoPlayer from "./video-player";
 
 import { Tables } from "@/types/supabase";
 
@@ -47,7 +48,7 @@ const ClassContent = ({ totalClasses, courseSlug, classData, getPrevClass, getNe
         {
           !classData.is_video
           ? (    
-            <ScrollShadow hideScrollBar className="prose text-foreground">
+            <ScrollShadow hideScrollBar className="prose text-foreground w-full h-full">
               <Content />
             </ScrollShadow>
           )
@@ -60,7 +61,8 @@ const ClassContent = ({ totalClasses, courseSlug, classData, getPrevClass, getNe
             //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             //   allowFullScreen={true}
             // />
-            <p>Trabajando en el video... ¡Esperalo!</p>
+            // <p>Trabajando en el video... ¡Espéralo!</p>
+            <VideoPlayer />
           )
         }
       </CardBody>

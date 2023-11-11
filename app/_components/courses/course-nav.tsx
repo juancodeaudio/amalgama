@@ -8,7 +8,7 @@ import { Button } from "@nextui-org/button"
 import { Card, CardHeader, CardBody } from "@nextui-org/card"
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
 
-import { HiOutlineChevronDoubleLeft } from "react-icons/hi2";
+import { HiOutlineChevronDoubleLeft, HiOutlinePlayCircle, HiOutlineSparkles, HiOutlineDocumentText } from "react-icons/hi2";
 
 type CourseNavProps = {
   courseData: CoursesWithClasses,
@@ -17,6 +17,17 @@ type CourseNavProps = {
 }
 
 const CourseNav = ({courseData, selectedClass, setTableIsActive}: CourseNavProps) => {
+
+  const getClassIcon = (isVideo: boolean, isQuiz: boolean) => {
+    if (isVideo) {
+      return <HiOutlinePlayCircle className="h-7 w-7 mr-1 opacity-50" />
+    }
+    if (isQuiz) {
+      return <HiOutlineSparkles className="h-6 w-6 mr-1 opacity-50" />
+    }
+    return <HiOutlineDocumentText className="h-6 w-6 mr-1 opacity-50" />
+  }
+
   return (
     <Card className="w-full h-full py-6 bg-background relative">
       <Button onPress={() => setTableIsActive(false)} variant="flat" isIconOnly className="absolute top-4 right-4 lg:hidden z-40"><HiOutlineChevronDoubleLeft /></Button>
@@ -31,15 +42,18 @@ const CourseNav = ({courseData, selectedClass, setTableIsActive}: CourseNavProps
               .sort((a, b) => a.class_number - b.class_number)
               .map((courseClass) => (
                 <Button
+                  startContent={getClassIcon(courseClass.is_video, courseClass.is_quiz)}
                   variant={courseClass.is_quiz ? "bordered" : "flat"}
                   as={NextLink}
                   href={`?${new URLSearchParams({
                     class: courseClass.slug
                   })}`}
                   color={courseClass.slug === selectedClass ? 'secondary': 'default'} 
-                  className="w-full h-auto py-2 flex flex-col items-start"
+                  className="h-auto"
                   key={courseClass.slug}
                 >
+                  <div className="w-full h-auto py-2 flex flex-col items-start">
+
                   <h4 className="uppercase font-bold text-base">{courseClass.title}</h4>
                   {
                     courseClass.is_quiz === false && (    
@@ -49,6 +63,7 @@ const CourseNav = ({courseData, selectedClass, setTableIsActive}: CourseNavProps
                       </div>
                     )
                   }
+                  </div>
                 </Button>
               ))
             }

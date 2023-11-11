@@ -55,7 +55,7 @@ export default function Confetti() {
     <ReactCanvasConfetti
       refConfetti={getInstance}
       style={{
-        position: 'fixed',
+        position: 'absolute',
         pointerEvents: 'none',
         width: '100%',
         height: '100%',
