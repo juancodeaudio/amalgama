@@ -8,7 +8,7 @@ import { motion as m } from "framer-motion";
 import { createBrowserClient } from '@supabase/ssr';
 
 import CourseNav from "@/components/courses/course-nav";
-import CommentsSection from "@/components/courses/comments-section";
+import CommentsSection from "@/app/_components/courses/comments/comments-section";
 import ClassContent from "@/components/courses/class-content";
 
 import { CoursesWithClasses, DbResult } from "@/types/supabase";

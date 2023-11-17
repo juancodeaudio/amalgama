@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import Link from "next/link";
 
 import { title } from "@/components/primitives";
-import VideoPlayer from "./video-player";
+import VideoPlayer from "./videos/video-player";
 
 import { Tables } from "@/types/supabase";
 
@@ -34,12 +34,12 @@ const ClassContent = ({ totalClasses, courseSlug, classData, getPrevClass, getNe
   }
 
   return (
-    <Card className="relative w-full h-[90vh] bg-background rounded-none lg:rounded-xl">
+    <Card className={`relative w-full ${!classData.is_video && 'h-[90vh]'} bg-background rounded-none lg:rounded-xl`}>
       <CardHeader className="w-full flex justify-center pt-10 pb-0">
         <Button onPress={() => setTableIsActive(true)} variant="flat" isIconOnly className="absolute top-4 left-4 lg:hidden"><HiOutlineChevronDoubleLeft /></Button>
         <h2 className={clsx(title({ size:'md'}), 'text-secondary')}>{classData.title}</h2>
       </CardHeader>
-      <CardBody className="w-full h-[80vh] flex flex-col items-center pb-0 pt-6 gap-6"> 
+      <CardBody className={`w-full ${!classData.is_video && 'h-[80vh]'} flex flex-col items-center pb-0 pt-6 gap-6`}> 
         {
           (!classData.is_quiz && !classData.is_video) && (
             <h3 className={clsx(title({ size:'sm'}), 'text-foreground/50')}>{classData.description}</h3>
@@ -53,16 +53,10 @@ const ClassContent = ({ totalClasses, courseSlug, classData, getPrevClass, getNe
             </ScrollShadow>
           )
           : (
-            // <iframe
-            //   className="w-full h-[50vh] lg:h-[70vh]"
-            //   src={classData.content}
-            //   title={classData.title}
-            //   frameBorder="0"
-            //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            //   allowFullScreen={true}
-            // />
             // <p>Trabajando en el video... ¡Espéralo!</p>
-            <VideoPlayer />
+            <VideoPlayer
+              videoUrl={classData.content}
+            />
           )
         }
       </CardBody>
