@@ -1,5 +1,5 @@
-import PlayButton from '@/app/_components/courses/play-button';
-import { Image } from "@nextui-org/image"
+import PlayButton from '@/app/_components/courses/content-blocks/play-button';
+import RobotBubble from "@/app/_components/courses/content-blocks/robot-bubble"
 
 Ya que hemos hablado de la forma y estructura de la letra de una canción a gran escala, ahora vamos a ir un poco más al detalle. En esta sesión y la siguiente conoceremos alguno elementos internos de la composición que nos ayudarán a dotar a nuestras letras con todos los aspectos que ya hemos aprendido.
 
@@ -28,51 +28,33 @@ Para que puedas percibir este efecto puedes realizar un ejercicio muy sencillo:
 <div className="flex justify-evenly gap-2 bg-background rounded-xl p-3">
   <div className="flex flex-col justify-center gap-3">
     <h4 className="my-0 text-center text-foreground">LOOP 1</h4>
-    <PlayButton file="/loop1-rock.mp3" fileName="Loop 1 - Rock"/>
+    <PlayButton file="/audiofiles/loop1-rock.mp3" fileName="Loop 1 - Rock"/>
   </div>
   <div className="flex flex-col justify-center gap-3">
     <h4 className="my-0 text-center text-foreground">LOOP 2</h4>
-    <PlayButton file="/loop2-funk.mp3" fileName="Loop 2 - Funk"/>
+    <PlayButton file="/audiofiles/loop2-funk.mp3" fileName="Loop 2 - Funk"/>
   </div>
   <div className="flex flex-col justify-center gap-3">
     <h4 className="my-0 text-center text-foreground">LOOP 3</h4>
-    <PlayButton file="/loop3-hiphop.mp3" fileName="Loop 3 - Hip Hop"/>
+    <PlayButton file="/audiofiles/loop3-hiphop.mp3" fileName="Loop 3 - Hip Hop"/>
   </div>
 </div>
 </div>
 
-<div className="flex justify-between">
-  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
-    <span className="text-secondary text-center font-bold">¿Lo sentiste?</span>
-    <span className="italic text-center">Cuando la repetiste tres veces posiblemente sentiste que te hacía falta algo para continuar. ¡Eso es! Esa es la diferencia entre estabilidad e inestabilidad de una sección de tu canción.</span>
-  </div>
-  <div className='w-2/5 flex justify-center items-center'>
-    <Image
-      width={200}
-      src="/cuterobots_2.png"
-      alt="Imagen de curso"
-    />
-  </div>
-</div> 
+<RobotBubble isInverted title="¿Lo sentiste?">
+Cuando la repetiste tres veces posiblemente sentiste que te hacía falta algo para continuar. ¡Eso es! Esa es la diferencia entre estabilidad e inestabilidad de una sección de tu canción.
+</RobotBubble>
 
 ¡Ahora puedes usar esto cómo quieras!
 
 Por ejemplo, puedes cambiar la estabilidad del coro de tu canción si en la primera aparición tienes una frase importante que se repite 3 veces y en el último coro repites esa frase 4 veces. Verás que te dará esa sensación de resolución y estabilidad hacia el final de la canción. Como si fuera el final de la historia que estás contando...
 
+<RobotBubble isWide title="¡Un consejo!">
+Lo que acabas de aprender puede tener más de un significado.
+La relación entre estabilidad e inestabilidad puede traducirse a conceptos como quietud **(estabilidad)** y movimiento **(inestabilidad)** o a percepciones como “Se ha terminado” **(estabilidad)** y “expectativa a lo que sigue” **(inestabilidad)**.
 
-<div className="flex justify-between">
-  <div className='w-2/5 flex justify-center items-center'>
-    <Image
-      width={200}
-      src="/cuterobots_2.png"
-      alt="Imagen de curso"
-    />
-  </div>
-  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
-    <span className="text-secondary text-center font-bold">¡Un consejo! </span>
-    <span className="italic text-center">Lo que acabas de aprender puede tener más de un significado.<br/>La relación entre estabilidad e inestabilidad puede traducirse a conceptos como quietud <span className="text-secondary">(estabilidad)</span> y movimiento <span className="text-secondary">(inestabilidad)</span> o a percepciones como “Se ha terminado” <span className="text-secondary">(estabilidad)</span> y “expectativa a lo que sigue” <span className="text-secondary">(inestabilidad)</span>.<br/><br/>Recuerda que esto es una herramienta que puedes usar a voluntad para direccionar la historia hacia donde quieres que vaya.</span>
-  </div>
-</div> 
+Recuerda que esto es una herramienta que puedes usar a voluntad para direccionar la historia hacia donde quieres que vaya.
+</RobotBubble>
 
 <p className="text-center block bg-primary/20 py-10 mx-auto rounded-lg text-foreground/70">
 <span className="text-primary font-bold">En cualquier caso, NO HAY RECETAS:</span><br/>

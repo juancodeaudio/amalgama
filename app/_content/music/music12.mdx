@@ -1,18 +1,28 @@
-¿Qué te parece si empezamos a escuchar algunos instrumentos? Vas a encontrar audios en donde hay solo un instrumento y luego canciones en donde escucharás, como protagonista, el instrumento que escuchaste antes.
+import RobotBubble from "@/app/_components/courses/content-blocks/robot-bubble"
+import MultiplePlayer from '@/app/_components/courses/content-blocks/multiple-player';
+import { music12 } from './music-audios' 
+import { Button } from "@nextui-org/button";
+import { HiArrowTopRightOnSquare } from "react-icons/hi2";
+import { Link } from "@nextui-org/link";
+import BitacoraBlock from "@/app/_components/courses/content-blocks/bitacora-block"
 
-(Audio 1 – Guitarras)
-(Audio 2 – Guitarra eléctrica)
-(Audio 3 – Piano)
-(Audio 4 – Trompeta)
+<RobotBubble isWide isInverted title="¿Qué te parece si empezamos a escuchar algunos instrumentos?">
+Vas a encontrar audios en donde hay solo un instrumento y luego canciones en donde escucharás, como protagonista, el instrumento que escuchaste antes.
+</RobotBubble>
 
-Dime cómo podemos describir cada uno de estos instrumentos. Por ejemplo, la trompeta tiene un sonido metálico, intenso, brillante, melódico, etc. ¿Qué cualidades le pondrías tú a los otros instrumentos que escuchaste?
 
-Ahora escuchemos estos instrumentos con los que nos hemos familiarizado en un contexto real. Aquí tienes 4 canciones en donde resalta el uso de alguno de estos instrumentos. ¡Escucha con atención!
+<MultiplePlayer audios={music12} />
+
+Dime cómo podemos describir cada uno de estos instrumentos. Por ejemplo, la trompeta tiene un sonido *metálico*, *intenso*, *brillante*, *melódico*, etc. ¿Qué cualidades le pondrías tú a los otros instrumentos que escuchaste?
+
+Ahora escuchemos estos instrumentos con los que nos hemos familiarizado en un contexto real. Aquí tienes 4 canciones en donde resalta el uso de alguno de estos instrumentos. **¡Escucha con atención!**
 
 Canciones: 
-1.	Guitarra (Las Curanderas – Laura Murcia)
-2.	Guitarra eléctrica (Guns N’ Roses – Sweet Child O’ Mine)
-3.	Piano (Coldplay – Clocks)
-4.	Trompeta (Nochecita – Maite Hontele)
+1.	<Button as={Link} href="https://www.youtube.com/watch?v=kWGs4wKgzMU" endContent={<HiArrowTopRightOnSquare/>} color="secondary" className="text-background my-0">Las Curanderas – Laura Murcia (Guitarra)</Button>
+2.	<Button as={Link} href="https://www.youtube.com/watch?v=1w7OgIMMRc4" endContent={<HiArrowTopRightOnSquare/>} color="secondary" className="text-background my-0">Guns N’ Roses – Sweet Child O’ Mine (Guitarra eléctrica)</Button>
+3.	<Button as={Link} href="https://www.youtube.com/watch?v=d020hcWA_Wg" endContent={<HiArrowTopRightOnSquare/>} color="secondary" className="text-background my-0">Coldplay – Clocks (Piano)</Button>
+4.	<Button as={Link} href="https://www.youtube.com/watch?v=r2-N4hh2DWM" endContent={<HiArrowTopRightOnSquare/>} color="secondary" className="text-background my-0">Nochecita – Maite Hontele (Trompeta)</Button>
 
+<BitacoraBlock>
 Ahora escribe en tu bitácora y en la sección de comentarios en qué otras canciones has escuchado estos instrumentos y si logras identificar algún otro instrumento más. 
+</BitacoraBlock>

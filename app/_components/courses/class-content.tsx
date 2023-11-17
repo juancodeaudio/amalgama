@@ -37,7 +37,7 @@ const ClassContent = ({ totalClasses, courseSlug, classData, getPrevClass, getNe
     <Card className={`relative w-full ${!classData.is_video && 'h-[90vh]'} bg-background rounded-none lg:rounded-xl`}>
       <CardHeader className="w-full flex justify-center pt-10 pb-0">
         <Button onPress={() => setTableIsActive(true)} variant="flat" isIconOnly className="absolute top-4 left-4 lg:hidden"><HiOutlineChevronDoubleLeft /></Button>
-        <h2 className={clsx(title({ size:'md'}), 'text-secondary')}>{classData.title}</h2>
+        <h2 className={clsx(title({ size:'md'}), 'text-secondary text-center')}>{classData.title}</h2>
       </CardHeader>
       <CardBody className={`w-full ${!classData.is_video && 'h-[80vh]'} flex flex-col items-center pb-0 pt-6 gap-6`}> 
         {

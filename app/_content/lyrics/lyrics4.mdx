@@ -3,6 +3,7 @@ import {Card, CardFooter} from "@nextui-org/card";
 import {Image as NextImage} from "@nextui-org/image";
 import {Button} from "@nextui-org/button";
 import {HiArrowTopRightOnSquare} from "react-icons/hi2";
+import RobotBubble from "@/app/_components/courses/content-blocks/robot-bubble"
 
 En esta sesión vamos a hablar sobre el contenido de la letra: la historia que vas a crear. Ten en cuenta que la letra de una canción es diferente al libreto de una película y al texto de un ensayo o de un libro. Vamos a usar una serie de recursos que te pueden ayudar a darte ideas sobre cómo escribir lo que quieres expresar. 
 
@@ -52,12 +53,12 @@ Hay 6 preguntas que son claves para saber cuál va a ser el contenido de tu crea
 Cada una de estas preguntas te ayudan a enfocar tus ideas y volver a ellas siempre que quieras.
 
 Por ejemplo, vamos a hablar de una mujer que está enamorada.
-- <span className="text-secondary">¿A quién le escribe?</span> Al amor de su vida, a su amor platónico, a su esposo, etc.
-- <span className="text-secondary">¿Qué le quiere decir?</span> Que lo ama, que lo extraña.
-- <span className="text-secondary">¿Cuándo?</span> Se puede decir que fue hace 7 años que lo conoció
-- <span className="text-secondary">¿Dónde?</span> "en la universidad", "en un concierto", "una mañana cuando caminaba por el bosque".
-- <span className="text-secondary">¿Por qué?</span> Es posible agregar que fue porque estaba estudiando música, porque la invitaron a ese concierto, entre otras. 
-- <span className="text-secondary">¿Cómo?</span> se puede contar cómo se cruzaron o encontraron por casualidad… o se quedaron atrapados en algún lugar. 
+- **¿A quién le escribe?** Al amor de su vida, a su amor platónico, a su esposo, etc.
+- **¿Qué le quiere decir?** Que lo ama, que lo extraña.
+- **¿Cuándo?** Se puede decir que fue hace 7 años que lo conoció
+- **¿Dónde?** "en la universidad", "en un concierto", "una mañana cuando caminaba por el bosque".
+- **¿Por qué?** Es posible agregar que fue porque estaba estudiando música, porque la invitaron a ese concierto, entre otras. 
+- **¿Cómo?** se puede contar cómo se cruzaron o encontraron por casualidad… o se quedaron atrapados en algún lugar. 
 
 Ahora reunamos todas estas ideas e intentemos hacer una historia que suene "poética". Veamos un ejemplo: 
 
@@ -125,17 +126,9 @@ Ahora vamos a hablar sobre la unidad, es decir, cuando todos los elementos funci
 
 Para ti, ¿cuándo algo es estable o inestable?
 
-<div className="flex justify-between">
-  <div className='w-2/5 flex justify-center items-center'>
-    <Image
-      width={200}
-      src="/cuterobots_2.png"
-      alt="Imagen de curso"
-    />
-  </div>
-  <span className="w-3/5 block bg-secondary/20 p-5 mx-auto rounded-lg">Resulta que la forma en que redactamos nuestras letras puede jugar con nuestras emociones. Cuando usamos frases afirmativas con significados positivos, como 'siempre estaré contigo' o 'nada puede detenernos', creamos una sensación reconfortante de estabilidad y seguridad. Por otro lado, si incorporamos preguntas sin respuesta, como '¿a dónde vamos?' o frases con emociones negativas, como 'nunca más volveré a confiar', generamos una sensación de inquietud y desasosiego en la música.</span>
-</div>
-
+<RobotBubble>
+Resulta que la forma en que redactamos nuestras letras puede jugar con nuestras emociones. Cuando usamos frases afirmativas con significados positivos, como 'siempre estaré contigo' o 'nada puede detenernos', creamos una sensación reconfortante de estabilidad y seguridad. Por otro lado, si incorporamos preguntas sin respuesta, como '¿a dónde vamos?' o frases con emociones negativas, como 'nunca más volveré a confiar', generamos una sensación de inquietud y desasosiego en la música.
+</RobotBubble>
 
 A continuación, encuentras una serie de posibles versos de una canción.
 
@@ -150,10 +143,10 @@ Cada una de ellas, <span className="text-bold text-secondary">¿es estable o ine
 
 Vamos a seguir con otros recursos que puedes usar para detallar aún más la letra de tus canciones, me refiero a las figuras retóricas. Hay muchas opciones, pero vamos a hablar de algunas que utilizamos en nuestro diario vivir: 
 
-* <span className="text-secondary">Metáfora:</span> la función de esta figura es la de transferir las cualidades de una cosa a otra. Por ejemplo: “Su corazón era tan frío”. 
-* <span className="text-secondary">Símil:</span> Esta figura deforma la realidad, es una comparación entre dos cosas. Al igual que la metáfora transfiere cualidades, pero en este caso se están nombrando ambas cosas. Por ejemplo, retomemos el ejemplo anterior; para el caso del símil se podría decir: “Su corazón era tan frio como el hielo”
-* <span className="text-secondary">Personificación:</span> en este caso su busca otorgar acciones, rasgos o cualidades a objetos o animales. Por ejemplo: “la soledad me acecha” 
-* <span className="text-secondary">Sinestesia:</span> esta es la última opción de las que les quiero hablar hoy, consiste en asignarle una sensación a conceptos que corresponden a otros sentidos. Por ejemplo: “esa mirada amarga que me castiga”.
+* **Metáfora:** la función de esta figura es la de transferir las cualidades de una cosa a otra. Por ejemplo: “Su corazón era tan frío”. 
+* **Símil:** Esta figura deforma la realidad, es una comparación entre dos cosas. Al igual que la metáfora transfiere cualidades, pero en este caso se están nombrando ambas cosas. Por ejemplo, retomemos el ejemplo anterior; para el caso del símil se podría decir: “Su corazón era tan frio como el hielo”
+* **Personificación:** en este caso su busca otorgar acciones, rasgos o cualidades a objetos o animales. Por ejemplo: “la soledad me acecha” 
+* **Sinestesia:** esta es la última opción de las que les quiero hablar hoy, consiste en asignarle una sensación a conceptos que corresponden a otros sentidos. Por ejemplo: “esa mirada amarga que me castiga”.
 
 Ahora te voy a dejar un ejercicio para que lo compartas en los comentarios y poder llegar a ver las diferentes interpretaciones que se les puede dar a una misma oración.
  
@@ -172,29 +165,19 @@ Llegamos al momento final de esta sesión, y quiero presentarte un recurso que p
 
 Veremos diferentes opciones que se desprenden de cada uno de los sentidos:
 
-* <span className="text-secondary">Vista:</span> en este caso puedes encontrar varias acciones para este sentido. Para una canción puedes usar “te miro a lo lejos” o “te contemplo a lo lejos” 
-*	<span className="text-secondary">Tacto:</span> realicemos este mismo ejercicio con uno más de los sentidos. Puedes escribir en tu canción “toco tu rostro con suavidad” o “acaricio tu rostro con suavidad” 
-*	<span className="text-secondary">Olfato:</span> ¿qué otras opciones crees que se pueden desprender de este sentido?, puede ser: huele, olfateo, exhalar, perfumar, etc. Por ejemplo: perfumar la memoria que perdura en la ropa. 
-*	<span className="text-secondary">Gusto:</span> aquí recuerda el sabor de las cosas que hayas probado y qué sucedió en esos momentos. Si quieres hablar de un helado que compartiste con alguien especial, podemos decir que “el sabor del helado que sentí en tu boca, saboreando el recuerdo de ese día”
-*	<span className="text-secondary">Escucha:</span> vamos con el último de los sentidos. Trae a tu memoria todas las cualidades que puedes utilizar para describirlo. Estas son algunas palabras: “percibí el sonido de tu corazón cuando te abrazaba” o “el ruido de tu llanto no me deja seguir”
+* **Vista:** en este caso puedes encontrar varias acciones para este sentido. Para una canción puedes usar “te miro a lo lejos” o “te contemplo a lo lejos” 
+*	**Tacto:** realicemos este mismo ejercicio con uno más de los sentidos. Puedes escribir en tu canción “toco tu rostro con suavidad” o “acaricio tu rostro con suavidad” 
+*	**Olfato:** ¿qué otras opciones crees que se pueden desprender de este sentido?, puede ser: huele, olfateo, exhalar, perfumar, etc. Por ejemplo: perfumar la memoria que perdura en la ropa. 
+*	**Gusto:** aquí recuerda el sabor de las cosas que hayas probado y qué sucedió en esos momentos. Si quieres hablar de un helado que compartiste con alguien especial, podemos decir que “el sabor del helado que sentí en tu boca, saboreando el recuerdo de ese día”
+*	**Escucha:** vamos con el último de los sentidos. Trae a tu memoria todas las cualidades que puedes utilizar para describirlo. Estas son algunas palabras: “percibí el sonido de tu corazón cuando te abrazaba” o “el ruido de tu llanto no me deja seguir”
 
 Cada una de las opciones que vayas a usar depende de lo que quieras decir y cuál palabra funciona más para ti. Tal vez sientas que usar una palabra tenga un significado más íntimo que otra. 
 
-<div className="flex justify-between">
-  <div className='w-2/5 flex justify-center items-center'>
-    <Image
-      width={200}
-      src="/cuterobots_2.png"
-      alt="Imagen de curso"
-    />
-  </div>
-  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
-    <span className="text-secondary text-center font-bold">UN TIP</span>
-    <span className="italic text-center">Recuerda que esta es solo una herramienta para que tú puedas expresarte de muchas formas en tus creaciones. No es obligatorio que la uses, pero inténtalo: de los intentos siempre salen cosas interesantes.</span>
-  </div>
-</div>
+<RobotBubble title="UN TIP">
+Recuerda que esta es solo una herramienta para que tú puedas expresarte de muchas formas en tus creaciones. No es obligatorio que la uses, pero inténtalo: de los intentos siempre salen cosas interesantes.
+</RobotBubble>
 
-<div className="bg-primary/20 p-5 mx-auto rounded-lg text-primary">
+<div className="bg-primary/20 p-5 mx-auto rounded-lg text-primary mt-6">
   <h3 className="mt-0 text-primary">BITÁCORA:</h3>
   <span>Recuerda seguir con tu bitácora y continúa con el "Día 2". Siempre son bienvenidos tus comentarios.</span>
 </div> 

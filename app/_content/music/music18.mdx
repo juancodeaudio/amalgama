@@ -1,16 +1,39 @@
+import RobotBubble from "@/app/_components/courses/content-blocks/robot-bubble"
+import MultiplePlayer from '@/app/_components/courses/content-blocks/multiple-player';
+import { Button } from "@nextui-org/button";
+import { HiArrowTopRightOnSquare } from "react-icons/hi2";
+import { Link } from "@nextui-org/link";
+import { music18a, music18b, music18c } from './music-audios' 
+
+<RobotBubble isInverted isWide title="¡HEY HEY!">
 La música se teje a través de hermosas melodías, y para crearlas, los instrumentos melódicos son las estrellas del espectáculo.
+</RobotBubble>
 
 Los instrumentos melódicos más comunes son:
 
-Instrumentos de cuerda: como la guitarra, el violín, el violonchelo, el contrabajo, el arpa y el piano.
-(sonidos e íconos o imágenes como ejemplo, para poner play y poder escuchar una melodía)
+**Instrumentos de cuerda:** como la guitarra, el violín, el violonchelo, el contrabajo, el arpa y el piano.
+<MultiplePlayer audios={music18a} />
 
-Instrumentos de viento: incluyendo la flauta, el clarinete, el saxofón, el oboe, la trompeta, el trombón y la tuba.
-(sonidos e íconos o imágenes como ejemplo, para poner play y poder escuchar una melodía)
+**Instrumentos de viento:** incluyendo la flauta, el clarinete, el saxofón, el oboe, la trompeta, el trombón y la tuba.
+<MultiplePlayer audios={music18b} />
 
-Instrumentos de percusión: tales como la marimba, el xilófono, el vibráfono, el glockenspiel, las campanas y la kalimba.
-(sonidos e íconos o imágenes como ejemplo, para poner play y poder escuchar una melodía)
+**Instrumentos de percusión:** tales como la marimba, el xilófono, el vibráfono, el glockenspiel, las campanas y la kalimba.
+<MultiplePlayer audios={music18c} />
 
-Estos instrumentos melódicos son versátiles y se encuentran en una variedad de géneros musicales, desde la música clásica hasta el pop. Son los que lideran las melodías, haciéndote cantar y bailar.
+Estos instrumentos melódicos son *versátiles* y se encuentran en una variedad de *géneros musicales*, desde la música clásica hasta el pop. Son los que lideran las melodías, haciéndote cantar y bailar.
 
-Ahora tienes el poder de componer tus propias melodías. Puedes utilizar tu voz, los instrumentos que tengas a tu alcance, o aprovechar diversas aplicaciones, tanto gratuitas como GarageBand o Audacity, o de pago, como Logic Pro X,  (Link a páginas) que ofrecen una amplia gama de sonidos e instrumentos para dar vida a tu creatividad musical.
+Ahora tienes el poder de componer tus propias melodías. Puedes utilizar *tu voz*, los *instrumentos* que tengas a tu alcance, o aprovechar diversas *aplicaciones* que ofrecen una amplia gama de sonidos e instrumentos para dar vida a tu creatividad musical.
+
+**Pueden ser gratuitas como:**
+
+<div className="flex gap-5 justify-center">
+  <Button as={Link} href="https://www.apple.com/mac/garageband/" endContent={<HiArrowTopRightOnSquare/>} color="secondary" className="text-background my-0">Garageband</Button>
+  <Button as={Link} href="https://www.audacityteam.org/" endContent={<HiArrowTopRightOnSquare/>} color="secondary" className="text-background my-0">Audacity</Button>
+</div>
+
+**o de pago como:**
+
+<div className="flex gap-5 justify-center">
+  <Button as={Link} href="https://www.apple.com/logic-pro/" endContent={<HiArrowTopRightOnSquare/>} color="secondary" className="text-background my-0">Logic Pro X</Button>
+</div>
+<br/>

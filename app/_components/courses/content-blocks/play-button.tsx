@@ -20,7 +20,6 @@ export const PlayButton = ({file, fileName}: PlayButtonProps) => {
   const playAudio = () => {
     play()
     setIsPlaying(true)
-    console.log('Duration: ',duration)
     if(duration) {
       setProgress(0)
       const interval = setInterval(() => {

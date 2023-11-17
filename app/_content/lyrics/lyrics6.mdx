@@ -1,19 +1,9 @@
-import PlayButton from '@/app/_components/courses/play-button';
-import { Image } from "@nextui-org/image"
+import PlayButton from '@/app/_components/courses/content-blocks/play-button';
+import RobotBubble from "@/app/_components/courses/content-blocks/robot-bubble"
 
-<div className="flex justify-between">
-  <div className='w-2/5 flex justify-center items-center'>
-    <Image
-      width={200}
-      src="/cuterobots_2.png"
-      alt="Imagen de curso"
-    />
-  </div>
-  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
-    <span className="text-secondary text-center font-bold">¿Eso es todo?</span>
-    <span className="italic text-center">Para concluir este curso de manera especial, te invitamos a participar en una actividad final emocionante.</span>
-  </div>
-</div> 
+<RobotBubble isWide title="¿Eso es todo?">
+Para concluir este curso de manera especial, te invitamos a participar en una actividad final emocionante.
+</RobotBubble>
 
 A continuación, te proporcionaremos un audio con una melodía, y te desafiamos a crear tu propia letra, aplicando todo lo que has aprendido en este curso <span className="italic text-secondary">(escucha el momento en el que entra el sonido de la guitarra eléctrica ¡esa es la melodía!)</span>. Mientras trabajas en esta letra, sumergete en la melodía, explorando las emociones y recuerdos que puede evocar.
 
@@ -24,27 +14,16 @@ Esperamos que disfrutes de este desafío y que sigas cultivando tus habilidades 
 <div className="flex justify-evenly gap-2 ">
   <div className="flex flex-col justify-center gap-3">
     <h4 className="my-0 text-center text-secondary">PISTA CON MELODÍA</h4>
-    <PlayButton file="/lyrics-finaltrack-full.mp3" fileName="Letras con alma - proyecto final (melodia)"/>
+    <PlayButton file="/audiofiles/lyrics-finaltrack-full.mp3" fileName="Letras con alma - proyecto final (melodia)"/>
   </div>
   <div className="flex flex-col justify-center gap-3">
     <h4 className="my-0 text-center text-secondary">PISTA INSTRUMENTAL</h4>
-    <PlayButton file="/lyrics-finaltrack-back.mp3" fileName="Letras con alma - proyecto final (pista)"/>
+    <PlayButton file="/audiofiles/lyrics-finaltrack-back.mp3" fileName="Letras con alma - proyecto final (pista)"/>
   </div>
 </div>
 <br/>
 
-<div className="flex justify-between">
-  <div className="w-3/5 bg-secondary/20 p-5 my-auto mx-auto rounded-lg flex flex-col">
-    <span className="text-secondary text-center font-bold">¿Un consejo más?</span>
-    <span className="italic text-center">Recuerda que la escritura de letras es un proceso en constante evolución, y cada canción es una oportunidad para compartir tus pensamientos, emociones y experiencias con el mundo. Puedes compartir este último proyecto en la sección de comentarios, copiando el link, para que otras personas puedan escuchar tu creación.</span>
-    <span className="text-secondary text-center font-bold">¡Hasta la próxima!</span>
-  </div>
-  <div className='w-2/5 flex justify-center items-center'>
-    <Image
-      width={200}
-      src="/cuterobots_2.png"
-      alt="Imagen de curso"
-    />
-  </div>
-</div>
-
+<RobotBubble isWide isInverted title="¿Un consejo más?">
+Recuerda que la escritura de letras es un proceso en constante evolución, y cada canción es una oportunidad para compartir tus pensamientos, emociones y experiencias con el mundo. Puedes compartir este último proyecto en la sección de comentarios, copiando el link, para que otras personas puedan escuchar tu creación.<br/>
+**¡Hasta la próxima!**
+</RobotBubble>

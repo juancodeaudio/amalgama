@@ -54,7 +54,7 @@ const CourseNav = ({courseData, selectedClass, setTableIsActive}: CourseNavProps
                 >
                   <div className="w-full h-auto py-2 flex flex-col items-start">
 
-                  <h4 className="uppercase font-bold text-base">{courseClass.title}</h4>
+                  <h4 className="uppercase font-bold text-base whitespace-normal ">{courseClass.title}</h4>
                   {
                     courseClass.is_quiz === false && (    
                       <div className="flex justify-between w-full opacity-50 text-sm gap-2">
