@@ -111,7 +111,7 @@ export const music16 = [
   },
   {
     title: "",
-    file: "/audiofiles/lmusic16-ej5.mp3",
+    file: "/audiofiles/music16-ej5.mp3",
     fileName: "Salto y paso",
   },
   {
@@ -182,7 +182,49 @@ export const music18c = [
   },
   {
     title: "Marimba",
-    file: "/audiofiles/music18-marimba.mp3",
+    file: "/audiofiles/music18-marimba.wav",
     fileName: "Marimba",
   }
+]
+export const music21 = [
+  {
+    title: "C",
+    file: "/audiofiles/music21-C.wav",
+    color: "bg-emerald-800",
+  },
+  {
+    title: "D",
+    file: "/audiofiles/music21-D.wav",
+    color: "bg-cyan-800",
+  },
+  {
+    title: "E",
+    file: "/audiofiles/music21-E.wav",
+    color: "bg-fuchsia-800",
+  },
+  {
+    title: "F",
+    file: "/audiofiles/music21-F.wav",
+    color: "bg-pink-800",
+  },
+  {
+    title: "G",
+    file: "/audiofiles/music21-G.wav",
+    color: "bg-orange-800",
+  },
+  {
+    title: "A",
+    file: "/audiofiles/music21-A.wav",
+    color: "bg-lime-800",
+  },
+  {
+    title: "B",
+    file: "/audiofiles/music21-B.wav",
+    color: "bg-teal-800",
+  },
+  {
+    title: "C",
+    file: "/audiofiles/music21-C.wav",
+    color: "bg-violet-800",
+  },
 ]

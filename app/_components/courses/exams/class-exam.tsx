@@ -3,11 +3,12 @@ import { useState } from 'react'
 import {Button} from '@nextui-org/button'
 import { lyricsExam } from '@/app/_content/lyrics/lyrics-exam'
 import ExamEnd from './exam-end';
+import AudioColorButton from '../content-blocks/audio-color-button';
 
 import {CircularProgress} from "@nextui-org/progress";
 import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card'
 
-import { HiChevronRight, HiOutlineXCircle, HiOutlineCheckCircle } from 'react-icons/hi2'
+import { HiChevronRight, HiOutlineXCircle, HiOutlineCheckCircle, HiOutlinePlay } from 'react-icons/hi2'
 
 type QuestionTypes = typeof lyricsExam[number]
 type ClassExamProps = {
@@ -99,6 +100,16 @@ const ClassExam = ({questions}: ClassExamProps) => {
       />
       <Card className='flex flex-col w-full'>
         <CardHeader className='justify-between relative py-0 px-5'>
+          {
+            questions[currentQuestion].audio !== null && (
+              <AudioColorButton
+                className='mr-4 h-10 w-10 bg-secondary hover:scale-110 hover:bg-secondary/80 transform transition-all duration-300 ease-in-out'
+                file={questions[currentQuestion].audio || ''}
+              >
+                <HiOutlinePlay className='h-6 w-6' />
+              </AudioColorButton>
+            )
+          }
           <p className='w-5/6'>{questions[currentQuestion].question}</p>
           <CircularProgress
             value={score}
